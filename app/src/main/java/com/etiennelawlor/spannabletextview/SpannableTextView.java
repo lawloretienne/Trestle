@@ -49,19 +49,8 @@ public class SpannableTextView extends TextView {
     // Set a single span
     public void setFormattedText(Span span) {
         if (span != null) {
-            String text = span.getText();
-            int color = span.getColor();
-            Typeface typeface = span.getTypeface();
-
-            if (!TextUtils.isEmpty(text)
-                    && color != 0
-                    && typeface != null) {
-
-                SpannableString ss = setUpSpannableString(text, color, typeface);
-                setText(ss);
-            } else {
-                Log.e("SpannableTextView", "Invalid input");
-            }
+            SpannableString ss = setUpSpannableString(span);
+            setText(ss);
         }
     }
 
@@ -71,37 +60,40 @@ public class SpannableTextView extends TextView {
             List<SpannableString> spannableStrings = new ArrayList<>();
 
             for (Span span : spans) {
-                String text = span.getText();
-                int color = span.getColor();
-                Typeface typeface = span.getTypeface();
-
-                if (!TextUtils.isEmpty(text)
-                        && color != 0
-                        && typeface != null) {
-
-                    SpannableString ss = setUpSpannableString(text, color, typeface);
-                    spannableStrings.add(ss);
-                } else {
-                    Log.e("SpannableTextView", "Invalid input");
-                }
+                SpannableString ss = setUpSpannableString(span);
+                spannableStrings.add(ss);
             }
 
             setText(TextUtils.concat(spannableStrings.toArray(new SpannableString[spannableStrings.size()])));
         }
     }
 
-    private SpannableString setUpSpannableString(String text, @ColorRes int color, Typeface typeface) {
-        SpannableString ss = new SpannableString(text);
-        ss.setSpan(
-                new ForegroundColorSpan(getContext().getResources().getColor(color)),
-                0,
-                text.length(),
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        ss.setSpan(
-                new CustomTypefaceSpan("", typeface),
-                0,
-                text.length(),
-                Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+    private SpannableString setUpSpannableString(Span span) {
+        SpannableString ss = null;
+        if (span != null) {
+            String text = span.getText();
+            int color = span.getForegroundColor();
+            Typeface typeface = span.getTypeface();
+
+            if (!TextUtils.isEmpty(text)
+                    && color != 0
+                    && typeface != null) {
+
+                ss = new SpannableString(text);
+                ss.setSpan(
+                        new ForegroundColorSpan(getContext().getResources().getColor(color)),
+                        0,
+                        text.length(),
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                ss.setSpan(
+                        new CustomTypefaceSpan("", typeface),
+                        0,
+                        text.length(),
+                        Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+            } else {
+                Log.e("SpannableTextView", "Invalid input");
+            }
+        }
 
         return ss;
     }
@@ -151,12 +143,12 @@ public class SpannableTextView extends TextView {
 
     public static class Span {
         private String Text;
-        private Integer Color;
+        private Integer ForegroundColor;
         private Typeface Typeface;
 
         public Span(String text, Integer color, android.graphics.Typeface typeface) {
             Text = text;
-            Color = color;
+            ForegroundColor = color;
             Typeface = typeface;
         }
 
@@ -164,8 +156,8 @@ public class SpannableTextView extends TextView {
             return Text;
         }
 
-        public Integer getColor() {
-            return Color;
+        public Integer getForegroundColor() {
+            return ForegroundColor;
         }
 
         public android.graphics.Typeface getTypeface() {
