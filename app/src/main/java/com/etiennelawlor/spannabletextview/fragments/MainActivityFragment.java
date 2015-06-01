@@ -54,35 +54,19 @@ public class MainActivityFragment extends Fragment {
         // Setup single span
         SpannableTextView tv1 = (SpannableTextView) view.findViewById(R.id.tv1);
 
-        String s4 = "This text is orange and bold italic";
-        int color = R.color.orange_500;
-        Typeface typeface = mBoldItalicFont;
-
-        tv1.setFormattedText(s4, color, typeface);
+        SpannableTextView.Span span
+                = new SpannableTextView.Span(getString(R.string.orange_and_bold_italic), R.color.orange_500, mBoldItalicFont);
+        tv1.setFormattedText(span);
 
         // Setup multiple spans
         SpannableTextView tv2 = (SpannableTextView) view.findViewById(R.id.tv2);
 
-        String s1 = "This text is purple and bold ";
-        String s2 = "This text is blue and italic ";
-        String s3 = "This text is green and regular";
+        List<SpannableTextView.Span> spans = new ArrayList<>();
+        spans.add(new SpannableTextView.Span(getString(R.string.purple_and_bold), R.color.purple_500, mBoldFont));
+        spans.add(new SpannableTextView.Span(getString(R.string.blue_and_italic), R.color.blue_500, mItalicFont));
+        spans.add(new SpannableTextView.Span(getString(R.string.green_and_regular), R.color.green_500, mRegularFont));
 
-        List<String> stringList = new ArrayList<>();
-        stringList.add(s1);
-        stringList.add(s2);
-        stringList.add(s3);
-
-        List<Integer> colors = new ArrayList<>();
-        colors.add(R.color.purple_500);
-        colors.add(R.color.blue_500);
-        colors.add(R.color.green_500);
-
-        List<Typeface> typefaces = new ArrayList<>();
-        typefaces.add(mBoldFont);
-        typefaces.add(mItalicFont);
-        typefaces.add(mRegularFont);
-
-        tv2.setFormattedText(stringList, colors, typefaces);
+        tv2.setFormattedText(spans);
     }
     // endregion
 

@@ -2,4 +2,8 @@
     <string name="app_name">SpannableTextView</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="orange_and_bold_italic">This text is orange and bold italic</string>
+    <string name="purple_and_bold">"This text is purple and bold "</string>
+    <string name="blue_and_italic">"This text is blue and italic "</string>
+    <string name="green_and_regular">This text is green and regular</string>
 </resources>
