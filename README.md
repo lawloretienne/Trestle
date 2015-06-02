@@ -23,7 +23,7 @@ Support the following spans :
 
 `SuperscriptSpan`
 
-![SpannableTextView](https://raw.githubusercontent.com/lawloretienne/SpannableTextView/master/images/SpannableTextView_Screenshot.png)
+![SpannableTextView](https://raw.githubusercontent.com/lawloretienne/SpannableTextView/master/images/SpannableTextView_Screenshot2.png)
 
 ## Sample Usage
 
