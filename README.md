@@ -1,6 +1,18 @@
 # SpannableTextView [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SpannableTextView-green.svg?style=flat)](https://android-arsenal.com/details/1/1916)
 A TextView that accepts one or more spans
 
+Support the following spans :
+
+`ForegroundColorSpan`
+
+`BackgroundColorSpan`
+
+`CustomTypefaceSpan`
+
+`RelativeSizeSpan`
+
+`URLSpan`
+
 ![SpannableTextView](https://raw.githubusercontent.com/lawloretienne/SpannableTextView/master/images/SpannableTextView_Screenshot.png)
 
 ## Sample Usage
