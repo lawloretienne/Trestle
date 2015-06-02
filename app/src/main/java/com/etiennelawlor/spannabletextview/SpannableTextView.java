@@ -3,16 +3,17 @@ package com.etiennelawlor.spannabletextview;
 import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.support.annotation.ColorRes;
-import android.support.annotation.NonNull;
+import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.TextUtils;
+import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.text.style.TypefaceSpan;
+import android.text.style.URLSpan;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -71,28 +72,58 @@ public class SpannableTextView extends TextView {
     private SpannableString setUpSpannableString(Span span) {
         SpannableString ss = null;
         if (span != null) {
+
             String text = span.getText();
-            int color = span.getForegroundColor();
-            Typeface typeface = span.getTypeface();
 
-            if (!TextUtils.isEmpty(text)
-                    && color != 0
-                    && typeface != null) {
-
+            if (!TextUtils.isEmpty(text)) {
                 ss = new SpannableString(text);
+            }
+
+            int fgColor = span.getForegroundColor();
+            if (fgColor != 0) {
                 ss.setSpan(
-                        new ForegroundColorSpan(getContext().getResources().getColor(color)),
+                        new ForegroundColorSpan(getContext().getResources().getColor(fgColor)),
                         0,
                         text.length(),
                         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+
+            int bgColor = span.getBackgroundColor();
+            if (bgColor != 0) {
+                ss.setSpan(
+                        new BackgroundColorSpan(getContext().getResources().getColor(bgColor)),
+                        0,
+                        text.length(),
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+
+            Typeface typeface = span.getTypeface();
+            if (typeface != null) {
                 ss.setSpan(
                         new CustomTypefaceSpan("", typeface),
                         0,
                         text.length(),
                         Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-            } else {
-                Log.e("SpannableTextView", "Invalid input");
             }
+
+            float relativeSize = span.getRelativeSize();
+            if (relativeSize != 0.0f) {
+                ss.setSpan(
+                        new RelativeSizeSpan(relativeSize),
+                        0,
+                        text.length(),
+                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+
+            boolean isUrl = span.isUrl();
+            if (isUrl) {
+                ss.setSpan(
+                        new URLSpan(text),
+                        0,
+                        text.length(),
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+
         }
 
         return ss;
@@ -138,30 +169,6 @@ public class SpannableTextView extends TextView {
             }
 
             paint.setTypeface(tf);
-        }
-    }
-
-    public static class Span {
-        private String Text;
-        private Integer ForegroundColor;
-        private Typeface Typeface;
-
-        public Span(String text, Integer color, android.graphics.Typeface typeface) {
-            Text = text;
-            ForegroundColor = color;
-            Typeface = typeface;
-        }
-
-        public String getText() {
-            return Text;
-        }
-
-        public Integer getForegroundColor() {
-            return ForegroundColor;
-        }
-
-        public android.graphics.Typeface getTypeface() {
-            return Typeface;
         }
     }
 
