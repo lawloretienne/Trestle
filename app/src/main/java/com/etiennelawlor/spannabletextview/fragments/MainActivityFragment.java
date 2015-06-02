@@ -57,7 +57,7 @@ public class MainActivityFragment extends Fragment {
 
         Span span1 =
                 new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-                        .foregroundColor(R.color.purple_500)
+                        .foregroundColor(R.color.purple_100)
                         .backgroundColor(R.color.green_500)
                         .typeface(mItalicFont)
                         .build();
@@ -75,12 +75,12 @@ public class MainActivityFragment extends Fragment {
                 .backgroundColor(R.color.yellow_500)
                 .build());
         spans1.add(new Span.Builder("ForegroundSpan and BackgroundSpan")
-                .foregroundColor(R.color.orange_500)
-                .backgroundColor(R.color.blue_500)
+                .foregroundColor(R.color.brown_500)
+                .backgroundColor(R.color.blue_300)
                 .build());
         spans1.add(new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-                .foregroundColor(R.color.green_500)
-                .backgroundColor(R.color.indigo_500)
+                .foregroundColor(R.color.green_700)
+                .backgroundColor(R.color.indigo_200)
                 .typeface(mRegularFont)
                 .build());
 
