@@ -4,23 +4,14 @@ A TextView that accepts one or more spans
 Support the following spans :
 
 `ForegroundColorSpan`
-
 `BackgroundColorSpan`
-
 `CustomTypefaceSpan`
-
 `RelativeSizeSpan`
-
 `URLSpan`
-
 `UnderlineSpan`
-
 `StrikethroughSpan`
-
 `QuoteSpan`
-
 `SubscriptSpan`
-
 `SuperscriptSpan`
 
 ![SpannableTextView](https://raw.githubusercontent.com/lawloretienne/SpannableTextView/master/images/SpannableTextView_Screenshot2.png)
