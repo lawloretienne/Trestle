@@ -55,42 +55,100 @@ public class MainActivityFragment extends Fragment {
         // Setup single span
         SpannableTextView tv1 = (SpannableTextView) view.findViewById(R.id.tv1);
 
-        Span span =
-                new Span.Builder(getString(R.string.orange_and_bold_italic))
+        Span span1 =
+                new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
                         .foregroundColor(R.color.purple_500)
                         .backgroundColor(R.color.green_500)
                         .typeface(mItalicFont)
                         .build();
 
-        tv1.setFormattedText(span);
+        tv1.setFormattedText(span1);
 
         // Setup multiple spans
         SpannableTextView tv2 = (SpannableTextView) view.findViewById(R.id.tv2);
 
-        List<Span> spans = new ArrayList<>();
-        spans.add(new Span.Builder(getString(R.string.purple_and_bold))
-                .foregroundColor(R.color.purple_500)
+        List<Span> spans1 = new ArrayList<>();
+        spans1.add(new Span.Builder("ForegroundSpan")
+                .foregroundColor(R.color.red_500)
+                .build());
+        spans1.add(new Span.Builder("BackgroundSpan")
                 .backgroundColor(R.color.yellow_500)
                 .build());
-        spans.add(new Span.Builder(getString(R.string.blue_and_italic))
-                .backgroundColor(R.color.red_500)
-                .typeface(mItalicFont)
+        spans1.add(new Span.Builder("ForegroundSpan and BackgroundSpan")
+                .foregroundColor(R.color.orange_500)
+                .backgroundColor(R.color.blue_500)
                 .build());
-        spans.add(new Span.Builder(getString(R.string.green_and_regular))
+        spans1.add(new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
                 .foregroundColor(R.color.green_500)
+                .backgroundColor(R.color.indigo_500)
                 .typeface(mRegularFont)
                 .build());
-        spans.add(new Span.Builder(getString(R.string.green_and_regular))
-                .foregroundColor(R.color.blue_500)
-                .typeface(mBoldFont)
+
+        tv2.setFormattedText(spans1);
+
+        // Setup single span
+        SpannableTextView tv3 = (SpannableTextView) view.findViewById(R.id.tv3);
+
+        Span span2 = new Span.Builder("RelativeSizeSpan")
                 .relativeSize(2.0f)
-                .build());
-        spans.add(new Span.Builder(getString(R.string.blue_and_italic))
-                .typeface(mItalicFont)
+                .build();
+
+        tv3.setFormattedText(span2);
+
+        // Setup single span
+        SpannableTextView tv4 = (SpannableTextView) view.findViewById(R.id.tv4);
+
+        Span span3 = new Span.Builder("URLSpan")
                 .isUrl(true)
+                .build();
+
+        tv4.setFormattedText(span3);
+
+        // Setup single span
+        SpannableTextView tv5 = (SpannableTextView) view.findViewById(R.id.tv5);
+
+        Span span4 = new Span.Builder("UnderlineSpan")
+                .isUnderline(true)
+                .build();
+
+        tv5.setFormattedText(span4);
+
+        // Setup single span
+        SpannableTextView tv6 = (SpannableTextView) view.findViewById(R.id.tv6);
+
+        Span span5 = new Span.Builder("StrikethroughSpan")
+                .isStrikethru(true)
+                .build();
+
+        tv6.setFormattedText(span5);
+
+
+        // Setup single span
+        SpannableTextView tv7 = (SpannableTextView) view.findViewById(R.id.tv7);
+
+        Span span6 = new Span.Builder("QuoteSpan")
+                .quoteColor(R.color.green_500)
+                .build();
+
+        tv7.setFormattedText(span6);
+
+        // Setup single span
+        SpannableTextView tv8 = (SpannableTextView) view.findViewById(R.id.tv8);
+
+        List<Span> spans2 = new ArrayList<>();
+        spans2.add(new Span.Builder("No Span ")
+                .build());
+        spans2.add(new Span.Builder("SubscriptSpan ")
+                .subscript(true)
+                .build());
+        spans2.add(new Span.Builder("No Span ")
+                .build());
+        spans2.add(new Span.Builder("SuperscriptSpan ")
+                .superscript(true)
                 .build());
 
-        tv2.setFormattedText(spans);
+        tv8.setFormattedText(spans2);
+
     }
     // endregion
 

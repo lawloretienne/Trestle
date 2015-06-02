@@ -10,9 +10,14 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.QuoteSpan;
 import android.text.style.RelativeSizeSpan;
+import android.text.style.StrikethroughSpan;
+import android.text.style.SubscriptSpan;
+import android.text.style.SuperscriptSpan;
 import android.text.style.TypefaceSpan;
 import android.text.style.URLSpan;
+import android.text.style.UnderlineSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -123,6 +128,52 @@ public class SpannableTextView extends TextView {
                         text.length(),
                         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
+
+            boolean isUnderline = span.isUnderline();
+            if (isUnderline) {
+                ss.setSpan(
+                        new UnderlineSpan(),
+                        0,
+                        text.length(),
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+
+            boolean isStrikethru = span.isStrikethru();
+            if (isStrikethru) {
+                ss.setSpan(
+                        new StrikethroughSpan(),
+                        0,
+                        text.length(),
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+
+            int quoteColor = span.getQuoteColor();
+            if (quoteColor != 0) {
+                ss.setSpan(
+                        new QuoteSpan(quoteColor),
+                        0,
+                        text.length(),
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+
+            boolean isSubscript = span.isSubscript();
+            if (isSubscript) {
+                ss.setSpan(
+                        new SubscriptSpan(),
+                        0,
+                        text.length(),
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+
+            boolean isSuperscript = span.isSuperscript();
+            if (isSuperscript) {
+                ss.setSpan(
+                        new SuperscriptSpan(),
+                        0,
+                        text.length(),
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+
 
         }
 
