@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SpannableTextView.iml" filepath="$PROJECT_DIR$/SpannableTextView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Trestle.iml" filepath="$PROJECT_DIR$/Trestle.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

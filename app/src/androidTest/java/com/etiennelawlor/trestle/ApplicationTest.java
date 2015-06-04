@@ -1,4 +1,4 @@
-package com.etiennelawlor.spannabletextview;
+package com.etiennelawlor.trestle;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

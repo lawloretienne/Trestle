@@ -16,7 +16,7 @@ Support the following spans :
 
 Also supports one or more spans, spanning the length of a regex match
 
-![Trestle](https://raw.githubusercontent.com/lawloretienne/SpannableTextView/master/images/Trestle_Screenshot.png)
+![Trestle](https://raw.githubusercontent.com/lawloretienne/Trestle/master/images/Trestle_Screenshot.png)
 
 ## Sample Usage
 
