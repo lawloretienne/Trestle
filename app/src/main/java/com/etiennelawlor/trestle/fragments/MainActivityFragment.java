@@ -1,4 +1,4 @@
-package com.etiennelawlor.spannabletextview.fragments;
+package com.etiennelawlor.trestle.fragments;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -6,10 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.etiennelawlor.spannabletextview.R;
-import com.etiennelawlor.spannabletextview.Span;
-import com.etiennelawlor.spannabletextview.SpannableTextView;
+import com.etiennelawlor.trestle.R;
+import com.etiennelawlor.trestle.Span;
+import com.etiennelawlor.trestle.Trestle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,19 +54,19 @@ public class MainActivityFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Setup single span
-        SpannableTextView tv1 = (SpannableTextView) view.findViewById(R.id.tv1);
+        TextView tv1 = (TextView) view.findViewById(R.id.tv1);
 
-        Span span1 =
+        CharSequence formattedText1 = Trestle.getFormattedText(getActivity(),
                 new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
                         .foregroundColor(R.color.purple_100)
                         .backgroundColor(R.color.green_500)
                         .typeface(mItalicFont)
-                        .build();
+                        .build());
 
-        tv1.setFormattedText(span1);
+        tv1.setText(formattedText1);
 
         // Setup multiple spans
-        SpannableTextView tv2 = (SpannableTextView) view.findViewById(R.id.tv2);
+        TextView tv2 = (TextView) view.findViewById(R.id.tv2);
 
         List<Span> spans1 = new ArrayList<>();
         spans1.add(new Span.Builder("ForegroundSpan")
@@ -84,56 +85,62 @@ public class MainActivityFragment extends Fragment {
                 .typeface(mRegularFont)
                 .build());
 
-        tv2.setFormattedText(spans1);
+        CharSequence formattedText2 = Trestle.getFormattedText(getActivity(), spans1);
+
+        tv2.setText(formattedText2);
 
         // Setup single span
-        SpannableTextView tv3 = (SpannableTextView) view.findViewById(R.id.tv3);
+        TextView tv3 = (TextView) view.findViewById(R.id.tv3);
 
-        Span span2 = new Span.Builder("RelativeSizeSpan")
-                .relativeSize(2.0f)
-                .build();
+        CharSequence formattedText3 = Trestle.getFormattedText(getActivity(),
+                new Span.Builder("RelativeSizeSpan")
+                        .relativeSize(2.0f)
+                        .build());
 
-        tv3.setFormattedText(span2);
-
-        // Setup single span
-        SpannableTextView tv4 = (SpannableTextView) view.findViewById(R.id.tv4);
-
-        Span span3 = new Span.Builder("URLSpan")
-                .isUrl(true)
-                .build();
-
-        tv4.setFormattedText(span3);
+        tv3.setText(formattedText3);
 
         // Setup single span
-        SpannableTextView tv5 = (SpannableTextView) view.findViewById(R.id.tv5);
+        TextView tv4 = (TextView) view.findViewById(R.id.tv4);
 
-        Span span4 = new Span.Builder("UnderlineSpan")
-                .isUnderline(true)
-                .build();
+        CharSequence formattedText4 = Trestle.getFormattedText(getActivity(),
+                new Span.Builder("URLSpan")
+                        .isUrl(true)
+                        .build());
 
-        tv5.setFormattedText(span4);
-
-        // Setup single span
-        SpannableTextView tv6 = (SpannableTextView) view.findViewById(R.id.tv6);
-
-        Span span5 = new Span.Builder("StrikethroughSpan")
-                .isStrikethru(true)
-                .build();
-
-        tv6.setFormattedText(span5);
-
+        tv4.setText(formattedText4);
 
         // Setup single span
-        SpannableTextView tv7 = (SpannableTextView) view.findViewById(R.id.tv7);
+        TextView tv5 = (TextView) view.findViewById(R.id.tv5);
 
-        Span span6 = new Span.Builder("QuoteSpan")
-                .quoteColor(R.color.green_500)
-                .build();
+        CharSequence formattedText5 = Trestle.getFormattedText(getActivity(),
+                new Span.Builder("UnderlineSpan")
+                        .isUnderline(true)
+                        .build());
 
-        tv7.setFormattedText(span6);
+        tv5.setText(formattedText5);
 
         // Setup single span
-        SpannableTextView tv8 = (SpannableTextView) view.findViewById(R.id.tv8);
+        TextView tv6 = (TextView) view.findViewById(R.id.tv6);
+
+        CharSequence formattedText6 = Trestle.getFormattedText(getActivity(),
+                new Span.Builder("StrikethroughSpan")
+                        .isStrikethru(true)
+                        .build());
+
+        tv6.setText(formattedText6);
+
+        // Setup single span
+        TextView tv7 = (TextView) view.findViewById(R.id.tv7);
+
+        CharSequence formattedText7 = Trestle.getFormattedText(getActivity(),
+                new Span.Builder("QuoteSpan")
+                        .quoteColor(R.color.green_500)
+                        .build());
+
+        tv7.setText(formattedText7);
+
+        // Setup single span
+        TextView tv8 = (TextView) view.findViewById(R.id.tv8);
 
         List<Span> spans2 = new ArrayList<>();
         spans2.add(new Span.Builder("No Span ")
@@ -147,19 +154,21 @@ public class MainActivityFragment extends Fragment {
                 .superscript(true)
                 .build());
 
-        tv8.setFormattedText(spans2);
+        CharSequence formattedText8 = Trestle.getFormattedText(getActivity(), spans2);
+        tv8.setText(formattedText8);
 
         // Setup single span
-        SpannableTextView tv9 = (SpannableTextView) view.findViewById(R.id.tv9);
+        TextView tv9 = (TextView) view.findViewById(R.id.tv9);
 
-        Span span7 = new Span.Builder("Regex - ForegroundColorSpan, BackgroundColorSpan, and CustomTypefaceSpan")
-                .regex("Span")
-                .foregroundColor(R.color.green_500)
-                .backgroundColor(R.color.red_200)
-                .typeface(mBoldItalicFont)
-                .build();
+        CharSequence formattedText9 = Trestle.getFormattedText(getActivity(),
+                new Span.Builder("Regex - ForegroundColorSpan, BackgroundColorSpan, and CustomTypefaceSpan")
+                        .regex("Span")
+                        .foregroundColor(R.color.green_500)
+                        .backgroundColor(R.color.red_200)
+                        .typeface(mBoldItalicFont)
+                        .build());
 
-        tv9.setFormattedText(span7);
+        tv9.setText(formattedText9);
 
     }
     // endregion

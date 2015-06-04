@@ -14,50 +14,51 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context=".fragments.MainActivityFragment">
 
-        <com.etiennelawlor.spannabletextview.SpannableTextView
+        <TextView
             android:id="@+id/tv1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"/>
 
-        <com.etiennelawlor.spannabletextview.SpannableTextView
+        <TextView
             android:id="@+id/tv2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp" />
 
-        <com.etiennelawlor.spannabletextview.SpannableTextView
+        <TextView
             android:id="@+id/tv3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp" />
 
-        <com.etiennelawlor.spannabletextview.SpannableTextView
+        <TextView
             android:id="@+id/tv4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.etiennelawlor.spannabletextview.SpannableTextView
+        <TextView
             android:id="@+id/tv5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.etiennelawlor.spannabletextview.SpannableTextView
+        <TextView
             android:id="@+id/tv6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.etiennelawlor.spannabletextview.SpannableTextView
+        <TextView
             android:id="@+id/tv7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.etiennelawlor.spannabletextview.SpannableTextView
+        <TextView
             android:id="@+id/tv8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp" />
 
-        <com.etiennelawlor.spannabletextview.SpannableTextView
+        <TextView
             android:id="@+id/tv9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

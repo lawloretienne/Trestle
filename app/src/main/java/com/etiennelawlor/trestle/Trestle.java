@@ -1,4 +1,4 @@
-package com.etiennelawlor.spannabletextview;
+package com.etiennelawlor.trestle;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -18,52 +18,34 @@ import android.text.style.SuperscriptSpan;
 import android.text.style.TypefaceSpan;
 import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
-import android.util.AttributeSet;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Created by etiennelawlor on 6/4/15.
+ */
+public class Trestle {
 
-// Set up 1 or more spans with a color and typeface
-public class SpannableTextView extends TextView {
-
-    //region Constructors
-    public SpannableTextView(Context context) {
-        super(context);
-        init(null);
-    }
-
-    public SpannableTextView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(attrs);
-    }
-
-    public SpannableTextView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init(attrs);
-    }
-    //endregion
-
-    // region Helper Methods
-    private void init(AttributeSet attrs) {
-        if (isInEditMode()) {
-            return;
-        }
-    }
+    private static Context mContext;
 
     // Set a single span
-    public void setFormattedText(Span span) {
+    public static SpannableString getFormattedText(Context context, Span span) {
+        mContext = context;
+        SpannableString ss = null;
         if (span != null) {
-            SpannableString ss = setUpSpannableString(span);
-            setText(ss);
+            ss = setUpSpannableString(span);
         }
+        return ss;
     }
 
     // Set multiple spans
-    public void setFormattedText(List<Span> spans) {
+    public static CharSequence getFormattedText(Context context, List<Span> spans) {
+        mContext = context;
+        CharSequence formattedText = null;
+
         if (spans != null) {
             List<SpannableString> spannableStrings = new ArrayList<>();
 
@@ -72,11 +54,13 @@ public class SpannableTextView extends TextView {
                 spannableStrings.add(ss);
             }
 
-            setText(TextUtils.concat(spannableStrings.toArray(new SpannableString[spannableStrings.size()])));
+            formattedText = TextUtils.concat(spannableStrings.toArray(new SpannableString[spannableStrings.size()]));
         }
+
+        return formattedText;
     }
 
-    private SpannableString setUpSpannableString(Span span) {
+    private static SpannableString setUpSpannableString(Span span) {
         SpannableString ss = null;
         if (span != null) {
 
@@ -129,29 +113,29 @@ public class SpannableTextView extends TextView {
         return ss;
     }
 
-    private void setUpForegroundColorSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpForegroundColorSpan(Span span, SpannableString ss, int start, int end){
         int fgColor = span.getForegroundColor();
         if (fgColor != 0) {
             ss.setSpan(
-                    new ForegroundColorSpan(getContext().getResources().getColor(fgColor)),
+                    new ForegroundColorSpan(mContext.getResources().getColor(fgColor)),
                     start,
                     end,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
-    private void setUpBackgroundColorSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpBackgroundColorSpan(Span span, SpannableString ss, int start, int end){
         int bgColor = span.getBackgroundColor();
         if (bgColor != 0) {
             ss.setSpan(
-                    new BackgroundColorSpan(getContext().getResources().getColor(bgColor)),
+                    new BackgroundColorSpan(mContext.getResources().getColor(bgColor)),
                     start,
                     end,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
-    private void setUpTypefaceSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpTypefaceSpan(Span span, SpannableString ss, int start, int end){
         Typeface typeface = span.getTypeface();
         if (typeface != null) {
             ss.setSpan(
@@ -162,7 +146,7 @@ public class SpannableTextView extends TextView {
         }
     }
 
-    private void setUpRelativeSizeSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpRelativeSizeSpan(Span span, SpannableString ss, int start, int end){
         float relativeSize = span.getRelativeSize();
         if (relativeSize != 0.0f) {
             ss.setSpan(
@@ -173,7 +157,7 @@ public class SpannableTextView extends TextView {
         }
     }
 
-    private void setUpUrlSpan(Span span, SpannableString ss, String text, int start, int end){
+    private static void setUpUrlSpan(Span span, SpannableString ss, String text, int start, int end){
         boolean isUrl = span.isUrl();
         if (isUrl) {
             ss.setSpan(
@@ -184,7 +168,7 @@ public class SpannableTextView extends TextView {
         }
     }
 
-    private void setUpUnderlineSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpUnderlineSpan(Span span, SpannableString ss, int start, int end){
         boolean isUnderline = span.isUnderline();
         if (isUnderline) {
             ss.setSpan(
@@ -195,7 +179,7 @@ public class SpannableTextView extends TextView {
         }
     }
 
-    private void setUpStrikethruSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpStrikethruSpan(Span span, SpannableString ss, int start, int end){
         boolean isStrikethru = span.isStrikethru();
         if (isStrikethru) {
             ss.setSpan(
@@ -206,7 +190,7 @@ public class SpannableTextView extends TextView {
         }
     }
 
-    private void setUpQuoteSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpQuoteSpan(Span span, SpannableString ss, int start, int end){
         int quoteColor = span.getQuoteColor();
         if (quoteColor != 0) {
             ss.setSpan(
@@ -217,7 +201,7 @@ public class SpannableTextView extends TextView {
         }
     }
 
-    private void setUpSubscriptSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpSubscriptSpan(Span span, SpannableString ss, int start, int end){
         boolean isSubscript = span.isSubscript();
         if (isSubscript) {
             ss.setSpan(
@@ -228,7 +212,7 @@ public class SpannableTextView extends TextView {
         }
     }
 
-    private void setUpSuperscriptSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpSuperscriptSpan(Span span, SpannableString ss, int start, int end){
         boolean isSuperscript = span.isSuperscript();
         if (isSuperscript) {
             ss.setSpan(
@@ -241,7 +225,7 @@ public class SpannableTextView extends TextView {
     // endregion
 
     // region Inner Classes
-    private class CustomTypefaceSpan extends TypefaceSpan {
+    private static class CustomTypefaceSpan extends TypefaceSpan {
 
         private final Typeface newType;
 

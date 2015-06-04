@@ -21,20 +21,20 @@ Also supports one or more spans, spanning the length of a regex match
 ## Sample Usage
 
 ```java
- // Setup single span
-SpannableTextView tv1 = (SpannableTextView) view.findViewById(R.id.tv1);
+// Setup single span
+TextView tv1 = (TextView) view.findViewById(R.id.tv1);
 
-Span span1 =
+CharSequence formattedText1 = Trestle.getFormattedText(getActivity(),
         new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-                .foregroundColor(R.color.purple_500)
+                .foregroundColor(R.color.purple_100)
                 .backgroundColor(R.color.green_500)
                 .typeface(mItalicFont)
-                .build();
+                .build());
 
-tv1.setFormattedText(span1);
+tv1.setText(formattedText1);
 
 // Setup multiple spans
-SpannableTextView tv2 = (SpannableTextView) view.findViewById(R.id.tv2);
+TextView tv2 = (TextView) view.findViewById(R.id.tv2);
 
 List<Span> spans1 = new ArrayList<>();
 spans1.add(new Span.Builder("ForegroundSpan")
@@ -44,16 +44,18 @@ spans1.add(new Span.Builder("BackgroundSpan")
         .backgroundColor(R.color.yellow_500)
         .build());
 spans1.add(new Span.Builder("ForegroundSpan and BackgroundSpan")
-        .foregroundColor(R.color.orange_500)
-        .backgroundColor(R.color.blue_500)
+        .foregroundColor(R.color.brown_500)
+        .backgroundColor(R.color.blue_300)
         .build());
 spans1.add(new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-        .foregroundColor(R.color.green_500)
-        .backgroundColor(R.color.indigo_500)
+        .foregroundColor(R.color.green_700)
+        .backgroundColor(R.color.indigo_200)
         .typeface(mRegularFont)
         .build());
 
-tv2.setFormattedText(spans1);
+CharSequence formattedText2 = Trestle.getFormattedText(getActivity(), spans1);
+
+tv2.setText(formattedText2);
 ```
 
 ## License
