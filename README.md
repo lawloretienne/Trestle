@@ -1,5 +1,5 @@
-# SpannableTextView [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SpannableTextView-green.svg?style=flat)](https://android-arsenal.com/details/1/1916)
-A TextView that accepts one or more spans
+# Trestle [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SpannableTextView-green.svg?style=flat)](https://android-arsenal.com/details/1/1916)
+A framework used to bridge one or more spans for use with a TextView
 
 Support the following spans :
 
