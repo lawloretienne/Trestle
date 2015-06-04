@@ -19,6 +19,7 @@ public class Span {
     private Integer QuoteColor;
     private boolean IsSubscript;
     private boolean IsSuperscript;
+    private String Regex;
     // endregion
 
     // region Constructor
@@ -34,6 +35,7 @@ public class Span {
         QuoteColor = builder.QuoteColor;
         IsSubscript = builder.IsSubscript;
         IsSuperscript = builder.IsSuperscript;
+        Regex = builder.Regex;
     }
     // endregion
 
@@ -81,6 +83,10 @@ public class Span {
     public boolean isSuperscript() {
         return IsSuperscript;
     }
+
+    public String getRegex() {
+        return Regex;
+    }
     // endregion
 
     // region Builder class
@@ -100,6 +106,7 @@ public class Span {
         private Integer QuoteColor = 0;
         private boolean IsSubscript = false;
         private boolean IsSuperscript = false;
+        private String Regex = "";
 
         public Builder(String text) {
             this.Text = text;
@@ -152,6 +159,11 @@ public class Span {
 
         public Builder superscript(boolean isSuperscript) {
             IsSuperscript = isSuperscript;
+            return this;
+        }
+
+        public Builder regex(String regex) {
+            Regex = regex;
             return this;
         }
 

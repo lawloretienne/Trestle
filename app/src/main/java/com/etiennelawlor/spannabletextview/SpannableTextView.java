@@ -23,6 +23,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 // Set up 1 or more spans with a color and typeface
@@ -84,100 +86,157 @@ public class SpannableTextView extends TextView {
                 ss = new SpannableString(text);
             }
 
-            int fgColor = span.getForegroundColor();
-            if (fgColor != 0) {
-                ss.setSpan(
-                        new ForegroundColorSpan(getContext().getResources().getColor(fgColor)),
-                        0,
-                        text.length(),
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            int start;
+            int end;
+
+            String regex = span.getRegex();
+            if(!TextUtils.isEmpty(regex)){
+                Pattern pattern = Pattern.compile(regex);
+                Matcher matcher = pattern.matcher(text);
+                while (matcher.find()) {
+
+                    start = matcher.start();
+                    end = matcher.end();
+
+                    setUpForegroundColorSpan(span, ss, start, end);
+                    setUpBackgroundColorSpan(span, ss, start, end);
+                    setUpTypefaceSpan(span, ss, start, end);
+                    setUpRelativeSizeSpan(span, ss, start, end);
+                    setUpUrlSpan(span, ss, text, start, end);
+                    setUpUnderlineSpan(span, ss, start, end);
+                    setUpStrikethruSpan(span, ss, start, end);
+                    setUpQuoteSpan(span, ss, start, end);
+                    setUpSubscriptSpan(span, ss, start, end);
+                    setUpSuperscriptSpan(span, ss, start, end);
+                }
+            } else {
+                start = 0;
+                end = text.length();
+
+                setUpForegroundColorSpan(span, ss, start, end);
+                setUpBackgroundColorSpan(span, ss, start, end);
+                setUpTypefaceSpan(span, ss, start, end);
+                setUpRelativeSizeSpan(span, ss, start, end);
+                setUpUrlSpan(span, ss, text, start, end);
+                setUpUnderlineSpan(span, ss, start, end);
+                setUpStrikethruSpan(span, ss, start, end);
+                setUpQuoteSpan(span, ss, start, end);
+                setUpSubscriptSpan(span, ss, start, end);
+                setUpSuperscriptSpan(span, ss, start, end);
             }
-
-            int bgColor = span.getBackgroundColor();
-            if (bgColor != 0) {
-                ss.setSpan(
-                        new BackgroundColorSpan(getContext().getResources().getColor(bgColor)),
-                        0,
-                        text.length(),
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
-
-            Typeface typeface = span.getTypeface();
-            if (typeface != null) {
-                ss.setSpan(
-                        new CustomTypefaceSpan("", typeface),
-                        0,
-                        text.length(),
-                        Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-            }
-
-            float relativeSize = span.getRelativeSize();
-            if (relativeSize != 0.0f) {
-                ss.setSpan(
-                        new RelativeSizeSpan(relativeSize),
-                        0,
-                        text.length(),
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
-
-            boolean isUrl = span.isUrl();
-            if (isUrl) {
-                ss.setSpan(
-                        new URLSpan(text),
-                        0,
-                        text.length(),
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
-
-            boolean isUnderline = span.isUnderline();
-            if (isUnderline) {
-                ss.setSpan(
-                        new UnderlineSpan(),
-                        0,
-                        text.length(),
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
-
-            boolean isStrikethru = span.isStrikethru();
-            if (isStrikethru) {
-                ss.setSpan(
-                        new StrikethroughSpan(),
-                        0,
-                        text.length(),
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
-
-            int quoteColor = span.getQuoteColor();
-            if (quoteColor != 0) {
-                ss.setSpan(
-                        new QuoteSpan(quoteColor),
-                        0,
-                        text.length(),
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
-
-            boolean isSubscript = span.isSubscript();
-            if (isSubscript) {
-                ss.setSpan(
-                        new SubscriptSpan(),
-                        0,
-                        text.length(),
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
-
-            boolean isSuperscript = span.isSuperscript();
-            if (isSuperscript) {
-                ss.setSpan(
-                        new SuperscriptSpan(),
-                        0,
-                        text.length(),
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
-
-
         }
 
         return ss;
+    }
+
+    private void setUpForegroundColorSpan(Span span, SpannableString ss, int start, int end){
+        int fgColor = span.getForegroundColor();
+        if (fgColor != 0) {
+            ss.setSpan(
+                    new ForegroundColorSpan(getContext().getResources().getColor(fgColor)),
+                    start,
+                    end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+    }
+
+    private void setUpBackgroundColorSpan(Span span, SpannableString ss, int start, int end){
+        int bgColor = span.getBackgroundColor();
+        if (bgColor != 0) {
+            ss.setSpan(
+                    new BackgroundColorSpan(getContext().getResources().getColor(bgColor)),
+                    start,
+                    end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+    }
+
+    private void setUpTypefaceSpan(Span span, SpannableString ss, int start, int end){
+        Typeface typeface = span.getTypeface();
+        if (typeface != null) {
+            ss.setSpan(
+                    new CustomTypefaceSpan("", typeface),
+                    start,
+                    end,
+                    Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+        }
+    }
+
+    private void setUpRelativeSizeSpan(Span span, SpannableString ss, int start, int end){
+        float relativeSize = span.getRelativeSize();
+        if (relativeSize != 0.0f) {
+            ss.setSpan(
+                    new RelativeSizeSpan(relativeSize),
+                    start,
+                    end,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+    }
+
+    private void setUpUrlSpan(Span span, SpannableString ss, String text, int start, int end){
+        boolean isUrl = span.isUrl();
+        if (isUrl) {
+            ss.setSpan(
+                    new URLSpan(text),
+                    start,
+                    end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+    }
+
+    private void setUpUnderlineSpan(Span span, SpannableString ss, int start, int end){
+        boolean isUnderline = span.isUnderline();
+        if (isUnderline) {
+            ss.setSpan(
+                    new UnderlineSpan(),
+                    start,
+                    end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+    }
+
+    private void setUpStrikethruSpan(Span span, SpannableString ss, int start, int end){
+        boolean isStrikethru = span.isStrikethru();
+        if (isStrikethru) {
+            ss.setSpan(
+                    new StrikethroughSpan(),
+                    start,
+                    end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+    }
+
+    private void setUpQuoteSpan(Span span, SpannableString ss, int start, int end){
+        int quoteColor = span.getQuoteColor();
+        if (quoteColor != 0) {
+            ss.setSpan(
+                    new QuoteSpan(quoteColor),
+                    start,
+                    end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+    }
+
+    private void setUpSubscriptSpan(Span span, SpannableString ss, int start, int end){
+        boolean isSubscript = span.isSubscript();
+        if (isSubscript) {
+            ss.setSpan(
+                    new SubscriptSpan(),
+                    start,
+                    end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+    }
+
+    private void setUpSuperscriptSpan(Span span, SpannableString ss, int start, int end){
+        boolean isSuperscript = span.isSuperscript();
+        if (isSuperscript) {
+            ss.setSpan(
+                    new SuperscriptSpan(),
+                    start,
+                    end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
     }
     // endregion
 

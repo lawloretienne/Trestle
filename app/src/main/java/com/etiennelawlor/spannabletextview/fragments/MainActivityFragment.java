@@ -149,6 +149,18 @@ public class MainActivityFragment extends Fragment {
 
         tv8.setFormattedText(spans2);
 
+        // Setup single span
+        SpannableTextView tv9 = (SpannableTextView) view.findViewById(R.id.tv9);
+
+        Span span7 = new Span.Builder("Regex - ForegroundColorSpan, BackgroundColorSpan, and CustomTypefaceSpan")
+                .regex("Span")
+                .foregroundColor(R.color.green_500)
+                .backgroundColor(R.color.red_200)
+                .typeface(mBoldItalicFont)
+                .build();
+
+        tv9.setFormattedText(span7);
+
     }
     // endregion
 
