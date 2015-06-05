@@ -1,6 +1,8 @@
 package com.etiennelawlor.trestle;
 
 import android.graphics.Typeface;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
 
 /**
  * Created by etiennelawlor on 6/1/15.
@@ -11,15 +13,17 @@ public class Span {
     private String Text;
     private Integer ForegroundColor;
     private Integer BackgroundColor;
-    private float RelativeSize;
+    private Float RelativeSize;
     private android.graphics.Typeface Typeface;
-    private boolean IsUrl;
-    private boolean IsUnderline;
-    private boolean IsStrikethru;
+    private Boolean IsUrl;
+    private Boolean IsUnderline;
+    private Boolean IsStrikethru;
     private Integer QuoteColor;
-    private boolean IsSubscript;
-    private boolean IsSuperscript;
+    private Boolean IsSubscript;
+    private Boolean IsSuperscript;
     private String Regex;
+    private android.text.style.ClickableSpan ClickableSpan;
+
     // endregion
 
     // region Constructor
@@ -36,57 +40,98 @@ public class Span {
         IsSubscript = builder.IsSubscript;
         IsSuperscript = builder.IsSuperscript;
         Regex = builder.Regex;
+        ClickableSpan = builder.ClickableSpan;
     }
     // endregion
 
     // region Getters
     public String getText() {
-        return Text;
+        if(TextUtils.isEmpty(Text)){
+            return "";
+        } else {
+            return Text;
+        }
     }
 
     public Integer getForegroundColor() {
-        return ForegroundColor;
+        if(ForegroundColor == null)
+            return -1;
+        else
+            return ForegroundColor;
     }
 
     public Integer getBackgroundColor() {
-        return BackgroundColor;
+        if(BackgroundColor == null)
+            return -1;
+        else
+            return BackgroundColor;
     }
 
     public android.graphics.Typeface getTypeface() {
         return Typeface;
     }
 
-    public float getRelativeSize() {
-        return RelativeSize;
+    public Float getRelativeSize() {
+        if(RelativeSize == null)
+            return 0.0F;
+        else
+            return RelativeSize;
     }
 
-    public boolean isUrl() {
-        return IsUrl;
+    public Boolean isUrl() {
+        if(IsUrl == null)
+            return false;
+        else
+            return IsUrl;
     }
 
-    public boolean isUnderline() {
-        return IsUnderline;
+    public Boolean isUnderline() {
+        if(IsUnderline == null)
+            return false;
+        else
+            return IsUnderline;
     }
 
-    public boolean isStrikethru() {
-        return IsStrikethru;
+    public Boolean isStrikethru() {
+        if(IsStrikethru == null)
+            return false;
+        else
+            return IsStrikethru;
     }
 
     public Integer getQuoteColor() {
-        return QuoteColor;
+        if(QuoteColor == null)
+            return -1;
+        else
+            return QuoteColor;
     }
 
-    public boolean isSubscript() {
-        return IsSubscript;
+    public Boolean isSubscript() {
+        if(IsSubscript == null)
+            return false;
+        else
+            return IsSubscript;
     }
 
-    public boolean isSuperscript() {
-        return IsSuperscript;
+    public Boolean isSuperscript() {
+        if(IsSuperscript == null)
+            return false;
+        else
+            return IsSuperscript;
     }
 
     public String getRegex() {
-        return Regex;
+        if(TextUtils.isEmpty(Regex)){
+            return "";
+        } else {
+            return Regex;
+        }
     }
+
+    public android.text.style.ClickableSpan getClickableSpan() {
+        return ClickableSpan;
+    }
+
     // endregion
 
     // region Builder class
@@ -99,25 +144,26 @@ public class Span {
         private Integer ForegroundColor = 0;
         private Integer BackgroundColor = 0;
         private android.graphics.Typeface Typeface = null;
-        private float RelativeSize = 0.0f;
-        private boolean IsUrl = false;
-        private boolean IsUnderline = false;
-        private boolean IsStrikethru = false;
+        private Float RelativeSize = 0.0f;
+        private Boolean IsUrl = false;
+        private Boolean IsUnderline = false;
+        private Boolean IsStrikethru = false;
         private Integer QuoteColor = 0;
-        private boolean IsSubscript = false;
-        private boolean IsSuperscript = false;
+        private Boolean IsSubscript = false;
+        private Boolean IsSuperscript = false;
         private String Regex = "";
+        private ClickableSpan ClickableSpan = null;
 
         public Builder(String text) {
             this.Text = text;
         }
 
-        public Builder foregroundColor(int fgColor) {
+        public Builder foregroundColor(Integer fgColor) {
             ForegroundColor = fgColor;
             return this;
         }
 
-        public Builder backgroundColor(int bgColor) {
+        public Builder backgroundColor(Integer bgColor) {
             BackgroundColor = bgColor;
             return this;
         }
@@ -127,43 +173,48 @@ public class Span {
             return this;
         }
 
-        public Builder relativeSize(float relativeSize) {
+        public Builder relativeSize(Float relativeSize) {
             RelativeSize = relativeSize;
             return this;
         }
 
-        public Builder isUrl(boolean isUrl) {
+        public Builder isUrl(Boolean isUrl) {
             IsUrl = isUrl;
             return this;
         }
 
-        public Builder isUnderline(boolean isUnderline) {
+        public Builder isUnderline(Boolean isUnderline) {
             IsUnderline = isUnderline;
             return this;
         }
 
-        public Builder isStrikethru(boolean isStrikethru) {
+        public Builder isStrikethru(Boolean isStrikethru) {
             IsStrikethru = isStrikethru;
             return this;
         }
 
-        public Builder quoteColor(int quoteColor) {
+        public Builder quoteColor(Integer quoteColor) {
             QuoteColor = quoteColor;
             return this;
         }
 
-        public Builder subscript(boolean isSubscript) {
+        public Builder subscript(Boolean isSubscript) {
             IsSubscript = isSubscript;
             return this;
         }
 
-        public Builder superscript(boolean isSuperscript) {
+        public Builder superscript(Boolean isSuperscript) {
             IsSuperscript = isSuperscript;
             return this;
         }
 
         public Builder regex(String regex) {
             Regex = regex;
+            return this;
+        }
+
+        public Builder clickableSpan(ClickableSpan clickableSpan) {
+            ClickableSpan = clickableSpan;
             return this;
         }
 

@@ -66,9 +66,7 @@ public class Trestle {
 
             String text = span.getText();
 
-            if (!TextUtils.isEmpty(text)) {
-                ss = new SpannableString(text);
-            }
+            ss = new SpannableString(text);
 
             int start;
             int end;
@@ -92,6 +90,7 @@ public class Trestle {
                     setUpQuoteSpan(span, ss, start, end);
                     setUpSubscriptSpan(span, ss, start, end);
                     setUpSuperscriptSpan(span, ss, start, end);
+                    setUpClickableSpan(span, ss, start, end);
                 }
             } else {
                 start = 0;
@@ -107,6 +106,7 @@ public class Trestle {
                 setUpQuoteSpan(span, ss, start, end);
                 setUpSubscriptSpan(span, ss, start, end);
                 setUpSuperscriptSpan(span, ss, start, end);
+                setUpClickableSpan(span, ss, start, end);
             }
         }
 
@@ -217,6 +217,17 @@ public class Trestle {
         if (isSuperscript) {
             ss.setSpan(
                     new SuperscriptSpan(),
+                    start,
+                    end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+    }
+
+    private static void setUpClickableSpan(Span span, SpannableString ss, int start, int end){
+        boolean isSuperscript = span.isSuperscript();
+        if (isSuperscript) {
+            ss.setSpan(
+                    span.getClickableSpan(),
                     start,
                     end,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
