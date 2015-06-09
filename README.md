@@ -1,7 +1,7 @@
 # Trestle [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Trestle-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1916)
 A framework used to bridge one or more spans for use with a TextView
 
-Support the following spans :
+Supports the following spans :
 
 `ForegroundColorSpan`
 `BackgroundColorSpan`
