@@ -7,12 +7,15 @@ Support the following spans :
 `BackgroundColorSpan`
 `CustomTypefaceSpan`
 `RelativeSizeSpan`
+`AbsoluteSizeSpan`
 `URLSpan`
 `UnderlineSpan`
 `StrikethroughSpan`
 `QuoteSpan`
 `SubscriptSpan`
 `SuperscriptSpan`
+`ClickableSpan`
+`ScaleXSpan`
 
 Also supports one or more spans, spanning the length of a regex match
 
