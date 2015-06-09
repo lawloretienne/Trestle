@@ -9,6 +9,7 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.BackgroundColorSpan;
+import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.QuoteSpan;
 import android.text.style.RelativeSizeSpan;
@@ -224,8 +225,8 @@ public class Trestle {
     }
 
     private static void setUpClickableSpan(Span span, SpannableString ss, int start, int end){
-        boolean isSuperscript = span.isSuperscript();
-        if (isSuperscript) {
+        ClickableSpan clickableSpan = span.getClickableSpan();
+        if (clickableSpan != null) {
             ss.setSpan(
                     span.getClickableSpan(),
                     start,

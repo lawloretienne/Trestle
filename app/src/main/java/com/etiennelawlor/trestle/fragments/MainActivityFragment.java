@@ -3,10 +3,14 @@ package com.etiennelawlor.trestle.fragments;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.etiennelawlor.trestle.R;
 import com.etiennelawlor.trestle.Span;
@@ -169,6 +173,26 @@ public class MainActivityFragment extends Fragment {
                         .build());
 
         tv9.setText(formattedText9);
+
+        // Setup single span
+        TextView tv10 = (TextView) view.findViewById(R.id.tv10);
+
+        ClickableSpan clickableSpan = new ClickableSpan(){
+            @Override
+            public void onClick(View view) {
+                if(isAdded() && isResumed()) {
+                    Toast.makeText(getActivity().getApplicationContext(), "You clicked on the ClickableSpan", Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+
+        CharSequence formattedText10 = Trestle.getFormattedText(getActivity(),
+                new Span.Builder("ClickableSpan")
+                        .clickableSpan(clickableSpan)
+                        .build());
+
+        tv10.setMovementMethod(LinkMovementMethod.getInstance());
+        tv10.setText(formattedText10);
 
     }
     // endregion
