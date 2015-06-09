@@ -8,11 +8,13 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.TextUtils;
+import android.text.style.AbsoluteSizeSpan;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.QuoteSpan;
 import android.text.style.RelativeSizeSpan;
+import android.text.style.ScaleXSpan;
 import android.text.style.StrikethroughSpan;
 import android.text.style.SubscriptSpan;
 import android.text.style.SuperscriptSpan;
@@ -85,6 +87,7 @@ public class Trestle {
                     setUpBackgroundColorSpan(span, ss, start, end);
                     setUpTypefaceSpan(span, ss, start, end);
                     setUpRelativeSizeSpan(span, ss, start, end);
+                    setUpAbsoluteSizeSpan(span, ss, start, end);
                     setUpUrlSpan(span, ss, text, start, end);
                     setUpUnderlineSpan(span, ss, start, end);
                     setUpStrikethruSpan(span, ss, start, end);
@@ -92,6 +95,7 @@ public class Trestle {
                     setUpSubscriptSpan(span, ss, start, end);
                     setUpSuperscriptSpan(span, ss, start, end);
                     setUpClickableSpan(span, ss, start, end);
+                    setUpScaleXSpan(span, ss, start, end);
                 }
             } else {
                 start = 0;
@@ -101,6 +105,7 @@ public class Trestle {
                 setUpBackgroundColorSpan(span, ss, start, end);
                 setUpTypefaceSpan(span, ss, start, end);
                 setUpRelativeSizeSpan(span, ss, start, end);
+                setUpAbsoluteSizeSpan(span, ss, start, end);
                 setUpUrlSpan(span, ss, text, start, end);
                 setUpUnderlineSpan(span, ss, start, end);
                 setUpStrikethruSpan(span, ss, start, end);
@@ -108,6 +113,7 @@ public class Trestle {
                 setUpSubscriptSpan(span, ss, start, end);
                 setUpSuperscriptSpan(span, ss, start, end);
                 setUpClickableSpan(span, ss, start, end);
+                setUpScaleXSpan(span, ss, start, end);
             }
         }
 
@@ -152,6 +158,17 @@ public class Trestle {
         if (relativeSize != 0.0f) {
             ss.setSpan(
                     new RelativeSizeSpan(relativeSize),
+                    start,
+                    end,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+    }
+
+    private static void setUpAbsoluteSizeSpan(Span span, SpannableString ss, int start, int end){
+        int absoluteSize = span.getAbsoluteSize();
+        if (absoluteSize != 0) {
+            ss.setSpan(
+                    new AbsoluteSizeSpan(absoluteSize, true),
                     start,
                     end,
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -229,6 +246,17 @@ public class Trestle {
         if (clickableSpan != null) {
             ss.setSpan(
                     span.getClickableSpan(),
+                    start,
+                    end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+    }
+
+    private static void setUpScaleXSpan(Span span, SpannableString ss, int start, int end){
+        float scaleX = span.getScaleX();
+        if (scaleX != 0.0f) {
+            ss.setSpan(
+                    new ScaleXSpan(scaleX),
                     start,
                     end,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

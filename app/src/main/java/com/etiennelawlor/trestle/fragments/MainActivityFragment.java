@@ -107,8 +107,8 @@ public class MainActivityFragment extends Fragment {
         TextView tv4 = (TextView) view.findViewById(R.id.tv4);
 
         CharSequence formattedText4 = Trestle.getFormattedText(getActivity(),
-                new Span.Builder("URLSpan")
-                        .isUrl(true)
+                new Span.Builder("AbsoluteSizeSpan")
+                        .absoluteSize(20)
                         .build());
 
         tv4.setText(formattedText4);
@@ -117,8 +117,8 @@ public class MainActivityFragment extends Fragment {
         TextView tv5 = (TextView) view.findViewById(R.id.tv5);
 
         CharSequence formattedText5 = Trestle.getFormattedText(getActivity(),
-                new Span.Builder("UnderlineSpan")
-                        .isUnderline(true)
+                new Span.Builder("URLSpan")
+                        .isUrl(true)
                         .build());
 
         tv5.setText(formattedText5);
@@ -127,8 +127,8 @@ public class MainActivityFragment extends Fragment {
         TextView tv6 = (TextView) view.findViewById(R.id.tv6);
 
         CharSequence formattedText6 = Trestle.getFormattedText(getActivity(),
-                new Span.Builder("StrikethroughSpan")
-                        .isStrikethru(true)
+                new Span.Builder("UnderlineSpan")
+                        .isUnderline(true)
                         .build());
 
         tv6.setText(formattedText6);
@@ -137,14 +137,24 @@ public class MainActivityFragment extends Fragment {
         TextView tv7 = (TextView) view.findViewById(R.id.tv7);
 
         CharSequence formattedText7 = Trestle.getFormattedText(getActivity(),
-                new Span.Builder("QuoteSpan")
-                        .quoteColor(R.color.green_500)
+                new Span.Builder("StrikethroughSpan")
+                        .isStrikethru(true)
                         .build());
 
         tv7.setText(formattedText7);
 
         // Setup single span
         TextView tv8 = (TextView) view.findViewById(R.id.tv8);
+
+        CharSequence formattedText8 = Trestle.getFormattedText(getActivity(),
+                new Span.Builder("QuoteSpan")
+                        .quoteColor(R.color.green_500)
+                        .build());
+
+        tv8.setText(formattedText8);
+
+        // Setup single span
+        TextView tv9 = (TextView) view.findViewById(R.id.tv9);
 
         List<Span> spans2 = new ArrayList<>();
         spans2.add(new Span.Builder("No Span ")
@@ -158,13 +168,13 @@ public class MainActivityFragment extends Fragment {
                 .superscript(true)
                 .build());
 
-        CharSequence formattedText8 = Trestle.getFormattedText(getActivity(), spans2);
-        tv8.setText(formattedText8);
+        CharSequence formattedText9 = Trestle.getFormattedText(getActivity(), spans2);
+        tv9.setText(formattedText9);
 
         // Setup single span
-        TextView tv9 = (TextView) view.findViewById(R.id.tv9);
+        TextView tv10 = (TextView) view.findViewById(R.id.tv10);
 
-        CharSequence formattedText9 = Trestle.getFormattedText(getActivity(),
+        CharSequence formattedText10 = Trestle.getFormattedText(getActivity(),
                 new Span.Builder("Regex - ForegroundColorSpan, BackgroundColorSpan, and CustomTypefaceSpan")
                         .regex("Span")
                         .foregroundColor(R.color.green_500)
@@ -172,10 +182,10 @@ public class MainActivityFragment extends Fragment {
                         .typeface(mBoldItalicFont)
                         .build());
 
-        tv9.setText(formattedText9);
+        tv10.setText(formattedText10);
 
         // Setup single span
-        TextView tv10 = (TextView) view.findViewById(R.id.tv10);
+        TextView tv11 = (TextView) view.findViewById(R.id.tv11);
 
         ClickableSpan clickableSpan = new ClickableSpan(){
             @Override
@@ -186,13 +196,23 @@ public class MainActivityFragment extends Fragment {
             }
         };
 
-        CharSequence formattedText10 = Trestle.getFormattedText(getActivity(),
+        CharSequence formattedText11 = Trestle.getFormattedText(getActivity(),
                 new Span.Builder("ClickableSpan")
                         .clickableSpan(clickableSpan)
                         .build());
 
-        tv10.setMovementMethod(LinkMovementMethod.getInstance());
-        tv10.setText(formattedText10);
+        tv11.setMovementMethod(LinkMovementMethod.getInstance());
+        tv11.setText(formattedText11);
+
+        // Setup single span
+        TextView tv12 = (TextView) view.findViewById(R.id.tv12);
+
+        CharSequence formattedText12 = Trestle.getFormattedText(getActivity(),
+                new Span.Builder("ScaleX")
+                        .scaleX(2.5f)
+                        .build());
+
+        tv12.setText(formattedText12);
 
     }
     // endregion

@@ -14,6 +14,7 @@ public class Span {
     private Integer ForegroundColor;
     private Integer BackgroundColor;
     private Float RelativeSize;
+    private Integer AbsoluteSize;
     private android.graphics.Typeface Typeface;
     private Boolean IsUrl;
     private Boolean IsUnderline;
@@ -23,6 +24,7 @@ public class Span {
     private Boolean IsSuperscript;
     private String Regex;
     private android.text.style.ClickableSpan ClickableSpan;
+    private Float ScaleX;
 
     // endregion
 
@@ -33,6 +35,7 @@ public class Span {
         BackgroundColor = builder.BackgroundColor;
         Typeface = builder.Typeface;
         RelativeSize = builder.RelativeSize;
+        AbsoluteSize = builder.AbsoluteSize;
         IsUrl = builder.IsUrl;
         IsUnderline = builder.IsUnderline;
         IsStrikethru = builder.IsStrikethru;
@@ -41,6 +44,7 @@ public class Span {
         IsSuperscript = builder.IsSuperscript;
         Regex = builder.Regex;
         ClickableSpan = builder.ClickableSpan;
+        ScaleX = builder.ScaleX;
     }
     // endregion
 
@@ -76,6 +80,13 @@ public class Span {
             return 0.0F;
         else
             return RelativeSize;
+    }
+
+    public Integer getAbsoluteSize() {
+        if(AbsoluteSize == null)
+            return -1;
+        else
+            return AbsoluteSize;
     }
 
     public Boolean isUrl() {
@@ -132,6 +143,13 @@ public class Span {
         return ClickableSpan;
     }
 
+    public Float getScaleX() {
+        if(ScaleX == null)
+            return 0.0F;
+        else
+            return ScaleX;
+    }
+
     // endregion
 
     // region Builder class
@@ -144,7 +162,8 @@ public class Span {
         private Integer ForegroundColor = 0;
         private Integer BackgroundColor = 0;
         private android.graphics.Typeface Typeface = null;
-        private Float RelativeSize = 0.0f;
+        private Float RelativeSize = 0.0F;
+        private Integer AbsoluteSize = 0;
         private Boolean IsUrl = false;
         private Boolean IsUnderline = false;
         private Boolean IsStrikethru = false;
@@ -153,6 +172,7 @@ public class Span {
         private Boolean IsSuperscript = false;
         private String Regex = "";
         private ClickableSpan ClickableSpan = null;
+        private Float ScaleX = 0.0F;
 
         public Builder(String text) {
             this.Text = text;
@@ -175,6 +195,11 @@ public class Span {
 
         public Builder relativeSize(Float relativeSize) {
             RelativeSize = relativeSize;
+            return this;
+        }
+
+        public Builder absoluteSize(Integer absoluteSize) {
+            AbsoluteSize = absoluteSize;
             return this;
         }
 
@@ -215,6 +240,11 @@ public class Span {
 
         public Builder clickableSpan(ClickableSpan clickableSpan) {
             ClickableSpan = clickableSpan;
+            return this;
+        }
+
+        public Builder scaleX(Float scaleX) {
+            ScaleX = scaleX;
             return this;
         }
 
