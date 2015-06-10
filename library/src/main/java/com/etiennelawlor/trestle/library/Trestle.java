@@ -1,4 +1,4 @@
-package com.etiennelawlor.trestle;
+package com.etiennelawlor.trestle.library;
 
 import android.content.Context;
 import android.graphics.Paint;

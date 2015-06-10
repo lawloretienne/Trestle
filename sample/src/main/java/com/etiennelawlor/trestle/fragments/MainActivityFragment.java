@@ -13,8 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etiennelawlor.trestle.R;
-import com.etiennelawlor.trestle.Span;
-import com.etiennelawlor.trestle.Trestle;
+import com.etiennelawlor.trestle.library.Span;
+import com.etiennelawlor.trestle.library.Trestle;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.etiennelawlor.trestle;
+package com.etiennelawlor.trestle.library;
 
 import android.graphics.Typeface;
 import android.text.TextUtils;
