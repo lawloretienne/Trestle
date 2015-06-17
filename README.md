@@ -27,10 +27,10 @@ Also supports one or more spans, spanning the length of a regex match
 // Setup single span
 TextView tv1 = (TextView) view.findViewById(R.id.tv1);
 
-CharSequence formattedText1 = Trestle.getFormattedText(getActivity(),
+CharSequence formattedText1 = Trestle.getFormattedText(
         new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-                .foregroundColor(R.color.purple_100)
-                .backgroundColor(R.color.green_500)
+                .foregroundColor(getResources().getColor(R.color.purple_100)) // Pass resolved color instead of resource id
+                .backgroundColor(getResources().getColor(R.color.green_500)) // Pass resolved color instead of resource id
                 .typeface(mItalicFont)
                 .build());
 
@@ -41,22 +41,22 @@ TextView tv2 = (TextView) view.findViewById(R.id.tv2);
 
 List<Span> spans1 = new ArrayList<>();
 spans1.add(new Span.Builder("ForegroundSpan")
-        .foregroundColor(R.color.red_500)
+        .foregroundColor(getResources().getColor(R.color.red_500)) // Pass resolved color instead of resource id
         .build());
 spans1.add(new Span.Builder("BackgroundSpan")
-        .backgroundColor(R.color.yellow_500)
+        .backgroundColor(getResources().getColor(R.color.yellow_500)) // Pass resolved color instead of resource id
         .build());
 spans1.add(new Span.Builder("ForegroundSpan and BackgroundSpan")
-        .foregroundColor(R.color.brown_500)
-        .backgroundColor(R.color.blue_300)
+        .foregroundColor(getResources().getColor(R.color.brown_500)) // Pass resolved color instead of resource id
+        .backgroundColor(getResources().getColor(R.color.blue_300)) // Pass resolved color instead of resource id
         .build());
 spans1.add(new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-        .foregroundColor(R.color.green_700)
-        .backgroundColor(R.color.indigo_200)
+        .foregroundColor(getResources().getColor(R.color.green_700)) // Pass resolved color instead of resource id
+        .backgroundColor(getResources().getColor(R.color.indigo_200)) // Pass resolved color instead of resource id
         .typeface(mRegularFont)
         .build());
 
-CharSequence formattedText2 = Trestle.getFormattedText(getActivity(), spans1);
+CharSequence formattedText2 = Trestle.getFormattedText(spans1);
 
 tv2.setText(formattedText2);
 ```
