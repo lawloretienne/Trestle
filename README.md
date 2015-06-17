@@ -21,6 +21,21 @@ Also supports one or more spans, spanning the length of a regex match
 
 ![Trestle](https://raw.githubusercontent.com/lawloretienne/Trestle/master/images/Trestle_Screenshot2.png)
 
+## Setup
+
+#### Gradle
+
+`compile 'com.github.lawloretienne:trestle:0.0.2'`
+
+#### Maven
+```
+<dependency>
+    <groupId>com.github.lawloretienne</groupId>
+    <artifactId>trestle</artifactId>
+    <version>0.0.2</version>
+</dependency>
+```
+
 ## Sample Usage
 
 ```java
