@@ -50,7 +50,7 @@ public class Span {
 
     // region Getters
     public String getText() {
-        if(TextUtils.isEmpty(Text)){
+        if (TextUtils.isEmpty(Text)) {
             return "";
         } else {
             return Text;
@@ -58,14 +58,14 @@ public class Span {
     }
 
     public Integer getForegroundColor() {
-        if(ForegroundColor == null)
+        if (ForegroundColor == null)
             return -1;
         else
             return ForegroundColor;
     }
 
     public Integer getBackgroundColor() {
-        if(BackgroundColor == null)
+        if (BackgroundColor == null)
             return -1;
         else
             return BackgroundColor;
@@ -76,63 +76,63 @@ public class Span {
     }
 
     public Float getRelativeSize() {
-        if(RelativeSize == null)
+        if (RelativeSize == null)
             return 0.0F;
         else
             return RelativeSize;
     }
 
     public Integer getAbsoluteSize() {
-        if(AbsoluteSize == null)
+        if (AbsoluteSize == null)
             return -1;
         else
             return AbsoluteSize;
     }
 
     public Boolean isUrl() {
-        if(IsUrl == null)
+        if (IsUrl == null)
             return false;
         else
             return IsUrl;
     }
 
     public Boolean isUnderline() {
-        if(IsUnderline == null)
+        if (IsUnderline == null)
             return false;
         else
             return IsUnderline;
     }
 
     public Boolean isStrikethru() {
-        if(IsStrikethru == null)
+        if (IsStrikethru == null)
             return false;
         else
             return IsStrikethru;
     }
 
     public Integer getQuoteColor() {
-        if(QuoteColor == null)
+        if (QuoteColor == null)
             return -1;
         else
             return QuoteColor;
     }
 
     public Boolean isSubscript() {
-        if(IsSubscript == null)
+        if (IsSubscript == null)
             return false;
         else
             return IsSubscript;
     }
 
     public Boolean isSuperscript() {
-        if(IsSuperscript == null)
+        if (IsSuperscript == null)
             return false;
         else
             return IsSuperscript;
     }
 
     public String getRegex() {
-        if(TextUtils.isEmpty(Regex)){
+        if (TextUtils.isEmpty(Regex)) {
             return "";
         } else {
             return Regex;
@@ -144,7 +144,7 @@ public class Span {
     }
 
     public Float getScaleX() {
-        if(ScaleX == null)
+        if (ScaleX == null)
             return 0.0F;
         else
             return ScaleX;

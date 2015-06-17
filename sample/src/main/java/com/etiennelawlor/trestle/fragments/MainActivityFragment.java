@@ -60,10 +60,10 @@ public class MainActivityFragment extends Fragment {
         // Setup single span
         TextView tv1 = (TextView) view.findViewById(R.id.tv1);
 
-        CharSequence formattedText1 = Trestle.getFormattedText(getActivity(),
+        CharSequence formattedText1 = Trestle.getFormattedText(
                 new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-                        .foregroundColor(R.color.purple_100)
-                        .backgroundColor(R.color.green_500)
+                        .foregroundColor(getResources().getColor(R.color.purple_100)) // Pass resolved color instead of resource id
+                        .backgroundColor(getResources().getColor(R.color.green_500)) // Pass resolved color instead of resource id
                         .typeface(mItalicFont)
                         .build());
 
@@ -74,29 +74,29 @@ public class MainActivityFragment extends Fragment {
 
         List<Span> spans1 = new ArrayList<>();
         spans1.add(new Span.Builder("ForegroundSpan")
-                .foregroundColor(R.color.red_500)
+                .foregroundColor(getResources().getColor(R.color.red_500)) // Pass resolved color instead of resource id
                 .build());
         spans1.add(new Span.Builder("BackgroundSpan")
-                .backgroundColor(R.color.yellow_500)
+                .backgroundColor(getResources().getColor(R.color.yellow_500)) // Pass resolved color instead of resource id
                 .build());
         spans1.add(new Span.Builder("ForegroundSpan and BackgroundSpan")
-                .foregroundColor(R.color.brown_500)
-                .backgroundColor(R.color.blue_300)
+                .foregroundColor(getResources().getColor(R.color.brown_500)) // Pass resolved color instead of resource id
+                .backgroundColor(getResources().getColor(R.color.blue_300)) // Pass resolved color instead of resource id
                 .build());
         spans1.add(new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-                .foregroundColor(R.color.green_700)
-                .backgroundColor(R.color.indigo_200)
+                .foregroundColor(getResources().getColor(R.color.green_700)) // Pass resolved color instead of resource id
+                .backgroundColor(getResources().getColor(R.color.indigo_200)) // Pass resolved color instead of resource id
                 .typeface(mRegularFont)
                 .build());
 
-        CharSequence formattedText2 = Trestle.getFormattedText(getActivity(), spans1);
+        CharSequence formattedText2 = Trestle.getFormattedText(spans1);
 
         tv2.setText(formattedText2);
 
         // Setup single span
         TextView tv3 = (TextView) view.findViewById(R.id.tv3);
 
-        CharSequence formattedText3 = Trestle.getFormattedText(getActivity(),
+        CharSequence formattedText3 = Trestle.getFormattedText(
                 new Span.Builder("RelativeSizeSpan")
                         .relativeSize(2.0f)
                         .build());
@@ -106,7 +106,7 @@ public class MainActivityFragment extends Fragment {
         // Setup single span
         TextView tv4 = (TextView) view.findViewById(R.id.tv4);
 
-        CharSequence formattedText4 = Trestle.getFormattedText(getActivity(),
+        CharSequence formattedText4 = Trestle.getFormattedText(
                 new Span.Builder("AbsoluteSizeSpan")
                         .absoluteSize(20)
                         .build());
@@ -116,7 +116,7 @@ public class MainActivityFragment extends Fragment {
         // Setup single span
         TextView tv5 = (TextView) view.findViewById(R.id.tv5);
 
-        CharSequence formattedText5 = Trestle.getFormattedText(getActivity(),
+        CharSequence formattedText5 = Trestle.getFormattedText(
                 new Span.Builder("URLSpan")
                         .isUrl(true)
                         .build());
@@ -126,7 +126,7 @@ public class MainActivityFragment extends Fragment {
         // Setup single span
         TextView tv6 = (TextView) view.findViewById(R.id.tv6);
 
-        CharSequence formattedText6 = Trestle.getFormattedText(getActivity(),
+        CharSequence formattedText6 = Trestle.getFormattedText(
                 new Span.Builder("UnderlineSpan")
                         .isUnderline(true)
                         .build());
@@ -136,7 +136,7 @@ public class MainActivityFragment extends Fragment {
         // Setup single span
         TextView tv7 = (TextView) view.findViewById(R.id.tv7);
 
-        CharSequence formattedText7 = Trestle.getFormattedText(getActivity(),
+        CharSequence formattedText7 = Trestle.getFormattedText(
                 new Span.Builder("StrikethroughSpan")
                         .isStrikethru(true)
                         .build());
@@ -146,9 +146,9 @@ public class MainActivityFragment extends Fragment {
         // Setup single span
         TextView tv8 = (TextView) view.findViewById(R.id.tv8);
 
-        CharSequence formattedText8 = Trestle.getFormattedText(getActivity(),
+        CharSequence formattedText8 = Trestle.getFormattedText(
                 new Span.Builder("QuoteSpan")
-                        .quoteColor(R.color.green_500)
+                        .quoteColor(getResources().getColor(R.color.green_500)) // Pass resolved color instead of resource id
                         .build());
 
         tv8.setText(formattedText8);
@@ -168,17 +168,17 @@ public class MainActivityFragment extends Fragment {
                 .superscript(true)
                 .build());
 
-        CharSequence formattedText9 = Trestle.getFormattedText(getActivity(), spans2);
+        CharSequence formattedText9 = Trestle.getFormattedText(spans2);
         tv9.setText(formattedText9);
 
         // Setup single span
         TextView tv10 = (TextView) view.findViewById(R.id.tv10);
 
-        CharSequence formattedText10 = Trestle.getFormattedText(getActivity(),
+        CharSequence formattedText10 = Trestle.getFormattedText(
                 new Span.Builder("Regex - ForegroundColorSpan, BackgroundColorSpan, and CustomTypefaceSpan")
                         .regex("Span")
-                        .foregroundColor(R.color.green_500)
-                        .backgroundColor(R.color.red_200)
+                        .foregroundColor(getResources().getColor(R.color.green_500)) // Pass resolved color instead of resource id
+                        .backgroundColor(getResources().getColor(R.color.red_200)) // Pass resolved color instead of resource id
                         .typeface(mBoldItalicFont)
                         .build());
 
@@ -187,16 +187,16 @@ public class MainActivityFragment extends Fragment {
         // Setup single span
         TextView tv11 = (TextView) view.findViewById(R.id.tv11);
 
-        ClickableSpan clickableSpan = new ClickableSpan(){
+        ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
-                if(isAdded() && isResumed()) {
+                if (isAdded() && isResumed()) {
                     Toast.makeText(getActivity().getApplicationContext(), "You clicked on the ClickableSpan", Toast.LENGTH_SHORT).show();
                 }
             }
         };
 
-        CharSequence formattedText11 = Trestle.getFormattedText(getActivity(),
+        CharSequence formattedText11 = Trestle.getFormattedText(
                 new Span.Builder("ClickableSpan")
                         .clickableSpan(clickableSpan)
                         .build());
@@ -207,7 +207,7 @@ public class MainActivityFragment extends Fragment {
         // Setup single span
         TextView tv12 = (TextView) view.findViewById(R.id.tv12);
 
-        CharSequence formattedText12 = Trestle.getFormattedText(getActivity(),
+        CharSequence formattedText12 = Trestle.getFormattedText(
                 new Span.Builder("ScaleX")
                         .scaleX(2.5f)
                         .build());

@@ -32,11 +32,8 @@ import java.util.regex.Pattern;
  */
 public class Trestle {
 
-    private static Context mContext;
-
     // Set a single span
-    public static SpannableString getFormattedText(Context context, Span span) {
-        mContext = context;
+    public static SpannableString getFormattedText(Span span) {
         SpannableString ss = null;
         if (span != null) {
             ss = setUpSpannableString(span);
@@ -45,8 +42,7 @@ public class Trestle {
     }
 
     // Set multiple spans
-    public static CharSequence getFormattedText(Context context, List<Span> spans) {
-        mContext = context;
+    public static CharSequence getFormattedText(List<Span> spans) {
         CharSequence formattedText = null;
 
         if (spans != null) {
@@ -75,7 +71,7 @@ public class Trestle {
             int end;
 
             String regex = span.getRegex();
-            if(!TextUtils.isEmpty(regex)){
+            if (!TextUtils.isEmpty(regex)) {
                 Pattern pattern = Pattern.compile(regex);
                 Matcher matcher = pattern.matcher(text);
                 while (matcher.find()) {
@@ -120,29 +116,29 @@ public class Trestle {
         return ss;
     }
 
-    private static void setUpForegroundColorSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpForegroundColorSpan(Span span, SpannableString ss, int start, int end) {
         int fgColor = span.getForegroundColor();
         if (fgColor != 0) {
             ss.setSpan(
-                    new ForegroundColorSpan(mContext.getResources().getColor(fgColor)),
+                    new ForegroundColorSpan(fgColor),
                     start,
                     end,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
-    private static void setUpBackgroundColorSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpBackgroundColorSpan(Span span, SpannableString ss, int start, int end) {
         int bgColor = span.getBackgroundColor();
         if (bgColor != 0) {
             ss.setSpan(
-                    new BackgroundColorSpan(mContext.getResources().getColor(bgColor)),
+                    new BackgroundColorSpan(bgColor),
                     start,
                     end,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
-    private static void setUpTypefaceSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpTypefaceSpan(Span span, SpannableString ss, int start, int end) {
         Typeface typeface = span.getTypeface();
         if (typeface != null) {
             ss.setSpan(
@@ -153,7 +149,7 @@ public class Trestle {
         }
     }
 
-    private static void setUpRelativeSizeSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpRelativeSizeSpan(Span span, SpannableString ss, int start, int end) {
         float relativeSize = span.getRelativeSize();
         if (relativeSize != 0.0f) {
             ss.setSpan(
@@ -164,7 +160,7 @@ public class Trestle {
         }
     }
 
-    private static void setUpAbsoluteSizeSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpAbsoluteSizeSpan(Span span, SpannableString ss, int start, int end) {
         int absoluteSize = span.getAbsoluteSize();
         if (absoluteSize != 0) {
             ss.setSpan(
@@ -175,7 +171,7 @@ public class Trestle {
         }
     }
 
-    private static void setUpUrlSpan(Span span, SpannableString ss, String text, int start, int end){
+    private static void setUpUrlSpan(Span span, SpannableString ss, String text, int start, int end) {
         boolean isUrl = span.isUrl();
         if (isUrl) {
             ss.setSpan(
@@ -186,7 +182,7 @@ public class Trestle {
         }
     }
 
-    private static void setUpUnderlineSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpUnderlineSpan(Span span, SpannableString ss, int start, int end) {
         boolean isUnderline = span.isUnderline();
         if (isUnderline) {
             ss.setSpan(
@@ -197,7 +193,7 @@ public class Trestle {
         }
     }
 
-    private static void setUpStrikethruSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpStrikethruSpan(Span span, SpannableString ss, int start, int end) {
         boolean isStrikethru = span.isStrikethru();
         if (isStrikethru) {
             ss.setSpan(
@@ -208,7 +204,7 @@ public class Trestle {
         }
     }
 
-    private static void setUpQuoteSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpQuoteSpan(Span span, SpannableString ss, int start, int end) {
         int quoteColor = span.getQuoteColor();
         if (quoteColor != 0) {
             ss.setSpan(
@@ -219,7 +215,7 @@ public class Trestle {
         }
     }
 
-    private static void setUpSubscriptSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpSubscriptSpan(Span span, SpannableString ss, int start, int end) {
         boolean isSubscript = span.isSubscript();
         if (isSubscript) {
             ss.setSpan(
@@ -230,7 +226,7 @@ public class Trestle {
         }
     }
 
-    private static void setUpSuperscriptSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpSuperscriptSpan(Span span, SpannableString ss, int start, int end) {
         boolean isSuperscript = span.isSuperscript();
         if (isSuperscript) {
             ss.setSpan(
@@ -241,7 +237,7 @@ public class Trestle {
         }
     }
 
-    private static void setUpClickableSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpClickableSpan(Span span, SpannableString ss, int start, int end) {
         ClickableSpan clickableSpan = span.getClickableSpan();
         if (clickableSpan != null) {
             ss.setSpan(
@@ -252,7 +248,7 @@ public class Trestle {
         }
     }
 
-    private static void setUpScaleXSpan(Span span, SpannableString ss, int start, int end){
+    private static void setUpScaleXSpan(Span span, SpannableString ss, int start, int end) {
         float scaleX = span.getScaleX();
         if (scaleX != 0.0f) {
             ss.setSpan(
