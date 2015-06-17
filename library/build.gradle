@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply from: 'maven-push.gradle'
 
 android {
     compileSdkVersion 22
@@ -8,7 +9,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
-        versionName "1.0.0"
+        versionName "0.0.1"
     }
     buildTypes {
         release {

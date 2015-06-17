@@ -16,7 +16,9 @@ gen/
 # Gradle files
 .gradle/
 build/
-maven-push.gradle
+
+# Gradle configuration file
+gradle.properties
 
 # Local configuration file (sdk path, etc)
 local.properties
