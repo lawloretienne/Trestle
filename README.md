@@ -76,6 +76,20 @@ CharSequence formattedText2 = Trestle.getFormattedText(spans1);
 tv2.setText(formattedText2);
 ```
 
+## Developed By
+
+* Etienne Lawlor 
+ 
+&nbsp;&nbsp;&nbsp;**Email** - lawloretienne@gmail.com
+
+&nbsp;&nbsp;&nbsp;**Website** - http://lawloretienne.github.io
+
+## Projects/Apps using Trestle
+
+- <a href="https://play.google.com/store/apps/details?id=com.biggu.shopsavvy&hl=en">ShopSavvy</a>
+
+Feel free to contact me to add yours to this list.
+
 ## License
 
 ```
