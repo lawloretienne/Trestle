@@ -44,8 +44,8 @@ TextView tv1 = (TextView) view.findViewById(R.id.tv1);
 
 CharSequence formattedText1 = Trestle.getFormattedText(
         new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-                .foregroundColor(getResources().getColor(R.color.purple_100)) // Pass resolved color instead of resource id
-                .backgroundColor(getResources().getColor(R.color.green_500)) // Pass resolved color instead of resource id
+                .foregroundColor(ContextCompat.getColor(getContext(), R.color.purple_100)) // Pass resolved color instead of resource id
+                .backgroundColor(ContextCompat.getColor(getContext(), R.color.green_500)) // Pass resolved color instead of resource id
                 .typeface(mItalicFont)
                 .build());
 
@@ -56,18 +56,18 @@ TextView tv2 = (TextView) view.findViewById(R.id.tv2);
 
 List<Span> spans1 = new ArrayList<>();
 spans1.add(new Span.Builder("ForegroundSpan")
-        .foregroundColor(getResources().getColor(R.color.red_500)) // Pass resolved color instead of resource id
+        .foregroundColor(ContextCompat.getColor(getContext(), R.color.red_500)) // Pass resolved color instead of resource id
         .build());
 spans1.add(new Span.Builder("BackgroundSpan")
-        .backgroundColor(getResources().getColor(R.color.yellow_500)) // Pass resolved color instead of resource id
+        .backgroundColor(ContextCompat.getColor(getContext(), R.color.yellow_500)) // Pass resolved color instead of resource id
         .build());
 spans1.add(new Span.Builder("ForegroundSpan and BackgroundSpan")
-        .foregroundColor(getResources().getColor(R.color.brown_500)) // Pass resolved color instead of resource id
-        .backgroundColor(getResources().getColor(R.color.blue_300)) // Pass resolved color instead of resource id
+        .foregroundColor(ContextCompat.getColor(getContext(), R.color.brown_500)) // Pass resolved color instead of resource id
+        .backgroundColor(ContextCompat.getColor(getContext(), R.color.blue_300)) // Pass resolved color instead of resource id
         .build());
 spans1.add(new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-        .foregroundColor(getResources().getColor(R.color.green_700)) // Pass resolved color instead of resource id
-        .backgroundColor(getResources().getColor(R.color.indigo_200)) // Pass resolved color instead of resource id
+        .foregroundColor(ContextCompat.getColor(getContext(), R.color.green_700)) // Pass resolved color instead of resource id
+        .backgroundColor(ContextCompat.getColor(getContext(), R.color.indigo_200)) // Pass resolved color instead of resource id
         .typeface(mRegularFont)
         .build());
 

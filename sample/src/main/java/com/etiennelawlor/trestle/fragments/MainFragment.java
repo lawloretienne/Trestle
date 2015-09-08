@@ -3,6 +3,7 @@ package com.etiennelawlor.trestle.fragments;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
@@ -22,7 +23,7 @@ import java.util.List;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
+public class MainFragment extends Fragment {
 
     // region Member Variables
     private Typeface mRegularFont;
@@ -32,7 +33,7 @@ public class MainActivityFragment extends Fragment {
     // endregion
 
     // Constructors
-    public MainActivityFragment() {
+    public MainFragment() {
     }
     // endregion
 
@@ -62,8 +63,8 @@ public class MainActivityFragment extends Fragment {
 
         CharSequence formattedText1 = Trestle.getFormattedText(
                 new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-                        .foregroundColor(getResources().getColor(R.color.purple_100)) // Pass resolved color instead of resource id
-                        .backgroundColor(getResources().getColor(R.color.green_500)) // Pass resolved color instead of resource id
+                        .foregroundColor(ContextCompat.getColor(getContext(), R.color.purple_100)) // Pass resolved color instead of resource id
+                        .backgroundColor(ContextCompat.getColor(getContext(), R.color.green_500)) // Pass resolved color instead of resource id
                         .typeface(mItalicFont)
                         .build());
 
@@ -74,18 +75,18 @@ public class MainActivityFragment extends Fragment {
 
         List<Span> spans1 = new ArrayList<>();
         spans1.add(new Span.Builder("ForegroundSpan")
-                .foregroundColor(getResources().getColor(R.color.red_500)) // Pass resolved color instead of resource id
+                .foregroundColor(ContextCompat.getColor(getContext(), R.color.red_500)) // Pass resolved color instead of resource id
                 .build());
         spans1.add(new Span.Builder("BackgroundSpan")
-                .backgroundColor(getResources().getColor(R.color.yellow_500)) // Pass resolved color instead of resource id
+                .backgroundColor(ContextCompat.getColor(getContext(), R.color.yellow_500)) // Pass resolved color instead of resource id
                 .build());
         spans1.add(new Span.Builder("ForegroundSpan and BackgroundSpan")
-                .foregroundColor(getResources().getColor(R.color.brown_500)) // Pass resolved color instead of resource id
-                .backgroundColor(getResources().getColor(R.color.blue_300)) // Pass resolved color instead of resource id
+                .foregroundColor(ContextCompat.getColor(getContext(), R.color.brown_500)) // Pass resolved color instead of resource id
+                .backgroundColor(ContextCompat.getColor(getContext(), R.color.blue_300)) // Pass resolved color instead of resource id
                 .build());
         spans1.add(new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-                .foregroundColor(getResources().getColor(R.color.green_700)) // Pass resolved color instead of resource id
-                .backgroundColor(getResources().getColor(R.color.indigo_200)) // Pass resolved color instead of resource id
+                .foregroundColor(ContextCompat.getColor(getContext(), R.color.green_700)) // Pass resolved color instead of resource id
+                .backgroundColor(ContextCompat.getColor(getContext(), R.color.indigo_200)) // Pass resolved color instead of resource id
                 .typeface(mRegularFont)
                 .build());
 
@@ -148,7 +149,7 @@ public class MainActivityFragment extends Fragment {
 
         CharSequence formattedText8 = Trestle.getFormattedText(
                 new Span.Builder("QuoteSpan")
-                        .quoteColor(getResources().getColor(R.color.green_500)) // Pass resolved color instead of resource id
+                        .quoteColor(ContextCompat.getColor(getContext(), R.color.green_500)) // Pass resolved color instead of resource id
                         .build());
 
         tv8.setText(formattedText8);
@@ -177,8 +178,8 @@ public class MainActivityFragment extends Fragment {
         CharSequence formattedText10 = Trestle.getFormattedText(
                 new Span.Builder("Regex - ForegroundColorSpan, BackgroundColorSpan, and CustomTypefaceSpan")
                         .regex("Span")
-                        .foregroundColor(getResources().getColor(R.color.green_500)) // Pass resolved color instead of resource id
-                        .backgroundColor(getResources().getColor(R.color.red_200)) // Pass resolved color instead of resource id
+                        .foregroundColor(ContextCompat.getColor(getContext(), R.color.green_500)) // Pass resolved color instead of resource id
+                        .backgroundColor(ContextCompat.getColor(getContext(), R.color.red_200)) // Pass resolved color instead of resource id
                         .typeface(mBoldItalicFont)
                         .build());
 
