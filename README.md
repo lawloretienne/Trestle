@@ -82,7 +82,7 @@ tv2.setText(formattedText2);
  
 &nbsp;&nbsp;&nbsp;**Email** - lawloretienne@gmail.com
 
-&nbsp;&nbsp;&nbsp;**Website** - http://lawloretienne.github.io
+&nbsp;&nbsp;&nbsp;**Website** - https://medium.com/@etiennelawlor
 
 ## Projects/Apps using Trestle
 
