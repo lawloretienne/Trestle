@@ -1,6 +1,5 @@
 package com.etiennelawlor.trestle.library;
 
-import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.text.Spannable;
@@ -31,7 +30,6 @@ import java.util.regex.Pattern;
  * Created by etiennelawlor on 6/4/15.
  */
 public class Trestle {
-
     // Set a single span
     public static SpannableString getFormattedText(Span span) {
         SpannableString ss = null;
@@ -46,14 +44,15 @@ public class Trestle {
         CharSequence formattedText = null;
 
         if (spans != null) {
-            List<SpannableString> spannableStrings = new ArrayList<>();
+            int size = spans.size();
+            List<SpannableString> spannableStrings = new ArrayList<>(size);
 
             for (Span span : spans) {
                 SpannableString ss = setUpSpannableString(span);
                 spannableStrings.add(ss);
             }
 
-            formattedText = TextUtils.concat(spannableStrings.toArray(new SpannableString[spannableStrings.size()]));
+            formattedText = TextUtils.concat(spannableStrings.toArray(new SpannableString[size]));
         }
 
         return formattedText;
@@ -62,7 +61,6 @@ public class Trestle {
     private static SpannableString setUpSpannableString(Span span) {
         SpannableString ss = null;
         if (span != null) {
-
             String text = span.getText();
 
             ss = new SpannableString(text);
@@ -120,10 +118,10 @@ public class Trestle {
         int fgColor = span.getForegroundColor();
         if (fgColor != 0) {
             ss.setSpan(
-                    new ForegroundColorSpan(fgColor),
-                    start,
-                    end,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                new ForegroundColorSpan(fgColor),
+                start,
+                end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
@@ -131,10 +129,10 @@ public class Trestle {
         int bgColor = span.getBackgroundColor();
         if (bgColor != 0) {
             ss.setSpan(
-                    new BackgroundColorSpan(bgColor),
-                    start,
-                    end,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                new BackgroundColorSpan(bgColor),
+                start,
+                end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
@@ -142,21 +140,21 @@ public class Trestle {
         Typeface typeface = span.getTypeface();
         if (typeface != null) {
             ss.setSpan(
-                    new CustomTypefaceSpan("", typeface),
-                    start,
-                    end,
-                    Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+                new CustomTypefaceSpan("", typeface),
+                start,
+                end,
+                Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
         }
     }
 
     private static void setUpRelativeSizeSpan(Span span, SpannableString ss, int start, int end) {
         float relativeSize = span.getRelativeSize();
-        if (relativeSize != 0.0f) {
+        if (relativeSize != 0) {
             ss.setSpan(
-                    new RelativeSizeSpan(relativeSize),
-                    start,
-                    end,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                new RelativeSizeSpan(relativeSize),
+                start,
+                end,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
@@ -164,43 +162,40 @@ public class Trestle {
         int absoluteSize = span.getAbsoluteSize();
         if (absoluteSize != 0) {
             ss.setSpan(
-                    new AbsoluteSizeSpan(absoluteSize, true),
-                    start,
-                    end,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                new AbsoluteSizeSpan(absoluteSize, true),
+                start,
+                end,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
     private static void setUpUrlSpan(Span span, SpannableString ss, String text, int start, int end) {
-        boolean isUrl = span.isUrl();
-        if (isUrl) {
+        if (span.isUrl()) {
             ss.setSpan(
-                    new URLSpan(text),
-                    start,
-                    end,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                new URLSpan(text),
+                start,
+                end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
     private static void setUpUnderlineSpan(Span span, SpannableString ss, int start, int end) {
-        boolean isUnderline = span.isUnderline();
-        if (isUnderline) {
+        if (span.isUnderline()) {
             ss.setSpan(
-                    new UnderlineSpan(),
-                    start,
-                    end,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                new UnderlineSpan(),
+                start,
+                end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
     private static void setUpStrikethruSpan(Span span, SpannableString ss, int start, int end) {
-        boolean isStrikethru = span.isStrikethru();
-        if (isStrikethru) {
+        if (span.isStrikethru()) {
             ss.setSpan(
-                    new StrikethroughSpan(),
-                    start,
-                    end,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                new StrikethroughSpan(),
+                start,
+                end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
@@ -208,32 +203,30 @@ public class Trestle {
         int quoteColor = span.getQuoteColor();
         if (quoteColor != 0) {
             ss.setSpan(
-                    new QuoteSpan(quoteColor),
-                    start,
-                    end,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                new QuoteSpan(quoteColor),
+                start,
+                end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
     private static void setUpSubscriptSpan(Span span, SpannableString ss, int start, int end) {
-        boolean isSubscript = span.isSubscript();
-        if (isSubscript) {
+        if (span.isSubscript()) {
             ss.setSpan(
-                    new SubscriptSpan(),
-                    start,
-                    end,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                new SubscriptSpan(),
+                start,
+                end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
     private static void setUpSuperscriptSpan(Span span, SpannableString ss, int start, int end) {
-        boolean isSuperscript = span.isSuperscript();
-        if (isSuperscript) {
+        if (span.isSuperscript()) {
             ss.setSpan(
-                    new SuperscriptSpan(),
-                    start,
-                    end,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                new SuperscriptSpan(),
+                start,
+                end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
@@ -241,53 +234,47 @@ public class Trestle {
         ClickableSpan clickableSpan = span.getClickableSpan();
         if (clickableSpan != null) {
             ss.setSpan(
-                    span.getClickableSpan(),
-                    start,
-                    end,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                clickableSpan,
+                start,
+                end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
     private static void setUpScaleXSpan(Span span, SpannableString ss, int start, int end) {
         float scaleX = span.getScaleX();
-        if (scaleX != 0.0f) {
+        if (scaleX != 0) {
             ss.setSpan(
-                    new ScaleXSpan(scaleX),
-                    start,
-                    end,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                new ScaleXSpan(scaleX),
+                start,
+                end,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
     // endregion
 
     // region Inner Classes
     private static class CustomTypefaceSpan extends TypefaceSpan {
-
         private final Typeface newType;
 
         public CustomTypefaceSpan(String family, Typeface type) {
             super(family);
-            newType = type;
+            this.newType = type;
         }
 
         @Override
         public void updateDrawState(TextPaint ds) {
-            applyCustomTypeFace(ds, newType);
+            applyCustomTypeFace(ds, this.newType);
         }
 
         @Override
         public void updateMeasureState(TextPaint paint) {
-            applyCustomTypeFace(paint, newType);
+            applyCustomTypeFace(paint, this.newType);
         }
 
-        private void applyCustomTypeFace(Paint paint, Typeface tf) {
-            int oldStyle;
+        private static void applyCustomTypeFace(Paint paint, Typeface tf) {
             Typeface old = paint.getTypeface();
-            if (old == null) {
-                oldStyle = 0;
-            } else {
-                oldStyle = old.getStyle();
-            }
+            int oldStyle = old == null ? 0 : old.getStyle();
 
             int fake = oldStyle & ~tf.getStyle();
             if ((fake & Typeface.BOLD) != 0) {

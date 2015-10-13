@@ -1,153 +1,110 @@
 package com.etiennelawlor.trestle.library;
 
 import android.graphics.Typeface;
-import android.text.TextUtils;
 import android.text.style.ClickableSpan;
 
 /**
  * Created by etiennelawlor on 6/1/15.
  */
-public class Span {
-
+public final class Span {
     // region Member Variables
-    private String Text;
-    private Integer ForegroundColor;
-    private Integer BackgroundColor;
-    private Float RelativeSize;
-    private Integer AbsoluteSize;
-    private android.graphics.Typeface Typeface;
-    private Boolean IsUrl;
-    private Boolean IsUnderline;
-    private Boolean IsStrikethru;
-    private Integer QuoteColor;
-    private Boolean IsSubscript;
-    private Boolean IsSuperscript;
-    private String Regex;
-    private android.text.style.ClickableSpan ClickableSpan;
-    private Float ScaleX;
+    private final String text;
+    private int foregroundColor = -1;
+    private int backgroundColor = -1;
+    private final float relativeSize;
+    private int absoluteSize = -1;
+    private final Typeface typeface;
+    private final boolean isUrl;
+    private final boolean isUnderline;
+    private final boolean isStrikethru;
+    private int quoteColor = -1;
+    private final boolean isSubscript;
+    private final boolean isSuperscript;
+    private final String regex;
+    private final ClickableSpan clickableSpan;
+    private final float scaleX;
 
     // endregion
 
     // region Constructor
-    private Span(Builder builder) {
-        Text = builder.Text;
-        ForegroundColor = builder.ForegroundColor;
-        BackgroundColor = builder.BackgroundColor;
-        Typeface = builder.Typeface;
-        RelativeSize = builder.RelativeSize;
-        AbsoluteSize = builder.AbsoluteSize;
-        IsUrl = builder.IsUrl;
-        IsUnderline = builder.IsUnderline;
-        IsStrikethru = builder.IsStrikethru;
-        QuoteColor = builder.QuoteColor;
-        IsSubscript = builder.IsSubscript;
-        IsSuperscript = builder.IsSuperscript;
-        Regex = builder.Regex;
-        ClickableSpan = builder.ClickableSpan;
-        ScaleX = builder.ScaleX;
+    Span(Builder builder) {
+        this.text = builder.text;
+        this.foregroundColor = builder.foregroundColor;
+        this.backgroundColor = builder.backgroundColor;
+        this.typeface = builder.typeface;
+        this.relativeSize = builder.relativeSize;
+        this.absoluteSize = builder.absoluteSize;
+        this.isUrl = builder.isUrl;
+        this.isUnderline = builder.isUnderline;
+        this.isStrikethru = builder.isStrikethru;
+        this.quoteColor = builder.quoteColor;
+        this.isSubscript = builder.isSubscript;
+        this.isSuperscript = builder.isSuperscript;
+        this.regex = builder.regex;
+        this.clickableSpan = builder.clickableSpan;
+        this.scaleX = builder.scaleX;
     }
     // endregion
 
     // region Getters
     public String getText() {
-        if (TextUtils.isEmpty(Text)) {
-            return "";
-        } else {
-            return Text;
-        }
+        return this.text;
     }
 
-    public Integer getForegroundColor() {
-        if (ForegroundColor == null)
-            return -1;
-        else
-            return ForegroundColor;
+    public int getForegroundColor() {
+        return this.foregroundColor;
     }
 
-    public Integer getBackgroundColor() {
-        if (BackgroundColor == null)
-            return -1;
-        else
-            return BackgroundColor;
+    public int getBackgroundColor() {
+        return this.backgroundColor;
     }
 
-    public android.graphics.Typeface getTypeface() {
-        return Typeface;
+    public Typeface getTypeface() {
+        return this.typeface;
     }
 
-    public Float getRelativeSize() {
-        if (RelativeSize == null)
-            return 0.0F;
-        else
-            return RelativeSize;
+    public float getRelativeSize() {
+        return this.relativeSize;
     }
 
-    public Integer getAbsoluteSize() {
-        if (AbsoluteSize == null)
-            return -1;
-        else
-            return AbsoluteSize;
+    public int getAbsoluteSize() {
+        return this.absoluteSize;
     }
 
-    public Boolean isUrl() {
-        if (IsUrl == null)
-            return false;
-        else
-            return IsUrl;
+    public boolean isUrl() {
+        return this.isUrl;
     }
 
-    public Boolean isUnderline() {
-        if (IsUnderline == null)
-            return false;
-        else
-            return IsUnderline;
+    public boolean isUnderline() {
+        return this.isUnderline;
     }
 
-    public Boolean isStrikethru() {
-        if (IsStrikethru == null)
-            return false;
-        else
-            return IsStrikethru;
+    public boolean isStrikethru() {
+        return this.isStrikethru;
     }
 
-    public Integer getQuoteColor() {
-        if (QuoteColor == null)
-            return -1;
-        else
-            return QuoteColor;
+    public int getQuoteColor() {
+        return this.quoteColor;
     }
 
-    public Boolean isSubscript() {
-        if (IsSubscript == null)
-            return false;
-        else
-            return IsSubscript;
+    public boolean isSubscript() {
+        return this.isSubscript;
     }
 
-    public Boolean isSuperscript() {
-        if (IsSuperscript == null)
-            return false;
-        else
-            return IsSuperscript;
+    public boolean isSuperscript() {
+        return this.isSuperscript;
     }
 
     public String getRegex() {
-        if (TextUtils.isEmpty(Regex)) {
-            return "";
-        } else {
-            return Regex;
-        }
+        return this.regex;
     }
 
-    public android.text.style.ClickableSpan getClickableSpan() {
-        return ClickableSpan;
+    public ClickableSpan getClickableSpan() {
+        return this.clickableSpan;
     }
 
-    public Float getScaleX() {
-        if (ScaleX == null)
-            return 0.0F;
-        else
-            return ScaleX;
+    public float getScaleX() {
+        return this.scaleX;
     }
 
     // endregion
@@ -156,95 +113,95 @@ public class Span {
 
     public static class Builder {
         // Required parameters
-        private final String Text;
+        private final String text;
 
         // Optional parameters - initialized to default values
-        private Integer ForegroundColor = 0;
-        private Integer BackgroundColor = 0;
-        private android.graphics.Typeface Typeface = null;
-        private Float RelativeSize = 0.0F;
-        private Integer AbsoluteSize = 0;
-        private Boolean IsUrl = false;
-        private Boolean IsUnderline = false;
-        private Boolean IsStrikethru = false;
-        private Integer QuoteColor = 0;
-        private Boolean IsSubscript = false;
-        private Boolean IsSuperscript = false;
-        private String Regex = "";
-        private ClickableSpan ClickableSpan = null;
-        private Float ScaleX = 0.0F;
+        private int foregroundColor;
+        private int backgroundColor;
+        private Typeface typeface;
+        private float relativeSize;
+        private int absoluteSize;
+        private boolean isUrl;
+        private boolean isUnderline;
+        private boolean isStrikethru;
+        private int quoteColor;
+        private boolean isSubscript;
+        private boolean isSuperscript;
+        private String regex = "";
+        private ClickableSpan clickableSpan;
+        private float scaleX;
 
         public Builder(String text) {
-            this.Text = text;
+            this.text = text;
         }
 
-        public Builder foregroundColor(Integer fgColor) {
-            ForegroundColor = fgColor;
+        public Builder foregroundColor(int fgColor) {
+            this.foregroundColor = fgColor;
             return this;
         }
 
-        public Builder backgroundColor(Integer bgColor) {
-            BackgroundColor = bgColor;
+        public Builder backgroundColor(int bgColor) {
+            this.backgroundColor = bgColor;
             return this;
         }
 
         public Builder typeface(Typeface typeface) {
-            Typeface = typeface;
+            this.typeface = typeface;
             return this;
         }
 
-        public Builder relativeSize(Float relativeSize) {
-            RelativeSize = relativeSize;
+        public Builder relativeSize(float relativeSize) {
+            this.relativeSize = relativeSize;
             return this;
         }
 
-        public Builder absoluteSize(Integer absoluteSize) {
-            AbsoluteSize = absoluteSize;
+        public Builder absoluteSize(int absoluteSize) {
+            this.absoluteSize = absoluteSize;
             return this;
         }
 
-        public Builder isUrl(Boolean isUrl) {
-            IsUrl = isUrl;
+        public Builder isUrl(boolean isUrl) {
+            this.isUrl = isUrl;
             return this;
         }
 
-        public Builder isUnderline(Boolean isUnderline) {
-            IsUnderline = isUnderline;
+        public Builder isUnderline(boolean isUnderline) {
+            this.isUnderline = isUnderline;
             return this;
         }
 
-        public Builder isStrikethru(Boolean isStrikethru) {
-            IsStrikethru = isStrikethru;
+        public Builder isStrikethru(boolean isStrikethru) {
+            this.isStrikethru = isStrikethru;
             return this;
         }
 
-        public Builder quoteColor(Integer quoteColor) {
-            QuoteColor = quoteColor;
+        public Builder quoteColor(int quoteColor) {
+            this.quoteColor = quoteColor;
             return this;
         }
 
-        public Builder subscript(Boolean isSubscript) {
-            IsSubscript = isSubscript;
+        public Builder subscript(boolean isSubscript) {
+            this.isSubscript = isSubscript;
             return this;
         }
 
-        public Builder superscript(Boolean isSuperscript) {
-            IsSuperscript = isSuperscript;
+        public Builder superscript(boolean isSuperscript) {
+            this.isSuperscript = isSuperscript;
             return this;
         }
 
         public Builder regex(String regex) {
-            Regex = regex;
+            this.regex = regex;
             return this;
         }
 
         public Builder clickableSpan(ClickableSpan clickableSpan) {
-            ClickableSpan = clickableSpan;
+            this.clickableSpan = clickableSpan;
             return this;
         }
 
-        public Builder scaleX(Float scaleX) {
-            ScaleX = scaleX;
+        public Builder scaleX(float scaleX) {
+            this.scaleX = scaleX;
             return this;
         }
 
