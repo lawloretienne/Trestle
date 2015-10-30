@@ -68,28 +68,49 @@ public class Trestle {
             int start;
             int end;
 
-            String regex = span.getRegex();
-            if (!TextUtils.isEmpty(regex)) {
-                Pattern pattern = Pattern.compile(regex);
-                Matcher matcher = pattern.matcher(text);
-                while (matcher.find()) {
+            String regexString = "";
+            int caseSensitivity = -1;
 
-                    start = matcher.start();
-                    end = matcher.end();
+            Regex regex = span.getRegex();
+            if(regex != null){
+                regexString = regex.getText();
+                caseSensitivity = regex.getCaseSensitivity();
+            }
 
-                    setUpForegroundColorSpan(span, ss, start, end);
-                    setUpBackgroundColorSpan(span, ss, start, end);
-                    setUpTypefaceSpan(span, ss, start, end);
-                    setUpRelativeSizeSpan(span, ss, start, end);
-                    setUpAbsoluteSizeSpan(span, ss, start, end);
-                    setUpUrlSpan(span, ss, text, start, end);
-                    setUpUnderlineSpan(span, ss, start, end);
-                    setUpStrikethruSpan(span, ss, start, end);
-                    setUpQuoteSpan(span, ss, start, end);
-                    setUpSubscriptSpan(span, ss, start, end);
-                    setUpSuperscriptSpan(span, ss, start, end);
-                    setUpClickableSpan(span, ss, start, end);
-                    setUpScaleXSpan(span, ss, start, end);
+            if (!TextUtils.isEmpty(regexString)) {
+                Pattern pattern = null;
+                switch (caseSensitivity){
+                    case Regex.CASE_INSENSITIVE:
+                        pattern = Pattern.compile(regexString, Pattern.CASE_INSENSITIVE);
+                        break;
+                    case Regex.CASE_SENSITIVE:
+                        pattern = Pattern.compile(regexString);
+                        break;
+                    default:
+                        break;
+                }
+
+                if(pattern != null){
+                    Matcher matcher = pattern.matcher(text);
+                    while (matcher.find()) {
+
+                        start = matcher.start();
+                        end = matcher.end();
+
+                        setUpForegroundColorSpan(span, ss, start, end);
+                        setUpBackgroundColorSpan(span, ss, start, end);
+                        setUpTypefaceSpan(span, ss, start, end);
+                        setUpRelativeSizeSpan(span, ss, start, end);
+                        setUpAbsoluteSizeSpan(span, ss, start, end);
+                        setUpUrlSpan(span, ss, text, start, end);
+                        setUpUnderlineSpan(span, ss, start, end);
+                        setUpStrikethruSpan(span, ss, start, end);
+                        setUpQuoteSpan(span, ss, start, end);
+                        setUpSubscriptSpan(span, ss, start, end);
+                        setUpSuperscriptSpan(span, ss, start, end);
+                        setUpClickableSpan(span, ss, start, end);
+                        setUpScaleXSpan(span, ss, start, end);
+                    }
                 }
             } else {
                 start = 0;

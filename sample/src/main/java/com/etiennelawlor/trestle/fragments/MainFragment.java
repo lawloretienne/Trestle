@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etiennelawlor.trestle.R;
+import com.etiennelawlor.trestle.library.Regex;
 import com.etiennelawlor.trestle.library.Span;
 import com.etiennelawlor.trestle.library.Trestle;
 
@@ -176,8 +177,8 @@ public class MainFragment extends Fragment {
         TextView tv10 = (TextView) view.findViewById(R.id.tv10);
 
         CharSequence formattedText10 = Trestle.getFormattedText(
-                new Span.Builder("Regex - ForegroundColorSpan, BackgroundColorSpan, and CustomTypefaceSpan")
-                        .regex("Span")
+                new Span.Builder("Regex - ForegroundColorSpan, BackgroundColorSpan, and CustomTypefaceSpan (case sensitive)")
+                        .regex(new Regex("c", Regex.CASE_SENSITIVE))
                         .foregroundColor(ContextCompat.getColor(getContext(), R.color.green_500)) // Pass resolved color instead of resource id
                         .backgroundColor(ContextCompat.getColor(getContext(), R.color.red_200)) // Pass resolved color instead of resource id
                         .typeface(mBoldItalicFont)
@@ -188,6 +189,19 @@ public class MainFragment extends Fragment {
         // Setup single span
         TextView tv11 = (TextView) view.findViewById(R.id.tv11);
 
+        CharSequence formattedText11 = Trestle.getFormattedText(
+                new Span.Builder("Regex - ForegroundColorSpan, BackgroundColorSpan, and CustomTypefaceSpan (case insensitive)")
+                        .regex(new Regex("c", Regex.CASE_INSENSITIVE))
+                        .foregroundColor(ContextCompat.getColor(getContext(), R.color.green_500)) // Pass resolved color instead of resource id
+                        .backgroundColor(ContextCompat.getColor(getContext(), R.color.red_200)) // Pass resolved color instead of resource id
+                        .typeface(mBoldItalicFont)
+                        .build());
+
+        tv11.setText(formattedText11);
+
+        // Setup single span
+        TextView tv12 = (TextView) view.findViewById(R.id.tv12);
+
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View view) {
@@ -197,23 +211,23 @@ public class MainFragment extends Fragment {
             }
         };
 
-        CharSequence formattedText11 = Trestle.getFormattedText(
+        CharSequence formattedText12 = Trestle.getFormattedText(
                 new Span.Builder("ClickableSpan")
                         .clickableSpan(clickableSpan)
                         .build());
 
-        tv11.setMovementMethod(LinkMovementMethod.getInstance());
-        tv11.setText(formattedText11);
+        tv12.setMovementMethod(LinkMovementMethod.getInstance());
+        tv12.setText(formattedText12);
 
         // Setup single span
-        TextView tv12 = (TextView) view.findViewById(R.id.tv12);
+        TextView tv13 = (TextView) view.findViewById(R.id.tv13);
 
-        CharSequence formattedText12 = Trestle.getFormattedText(
+        CharSequence formattedText13 = Trestle.getFormattedText(
                 new Span.Builder("ScaleX")
                         .scaleX(2.5f)
                         .build());
 
-        tv12.setText(formattedText12);
+        tv13.setText(formattedText13);
 
     }
     // endregion

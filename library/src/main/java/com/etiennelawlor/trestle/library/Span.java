@@ -20,7 +20,7 @@ public final class Span {
     private int quoteColor = -1;
     private final boolean isSubscript;
     private final boolean isSuperscript;
-    private final String regex;
+    private final Regex regex;
     private final ClickableSpan clickableSpan;
     private final float scaleX;
 
@@ -95,7 +95,7 @@ public final class Span {
         return this.isSuperscript;
     }
 
-    public String getRegex() {
+    public Regex getRegex() {
         return this.regex;
     }
 
@@ -127,7 +127,7 @@ public final class Span {
         private int quoteColor;
         private boolean isSubscript;
         private boolean isSuperscript;
-        private String regex = "";
+        private Regex regex;
         private ClickableSpan clickableSpan;
         private float scaleX;
 
@@ -190,7 +190,7 @@ public final class Span {
             return this;
         }
 
-        public Builder regex(String regex) {
+        public Builder regex(Regex regex) {
             this.regex = regex;
             return this;
         }
