@@ -191,7 +191,7 @@ public class MainFragment extends Fragment {
 
         CharSequence formattedText11 = Trestle.getFormattedText(
                 new Span.Builder("Regex - ForegroundColorSpan, BackgroundColorSpan, and CustomTypefaceSpan (case insensitive)")
-                        .regex(new Regex("c", Regex.CASE_INSENSITIVE))
+                        .regex(new Regex("(", Regex.CASE_INSENSITIVE))
                         .foregroundColor(ContextCompat.getColor(getContext(), R.color.green_500)) // Pass resolved color instead of resource id
                         .backgroundColor(ContextCompat.getColor(getContext(), R.color.red_200)) // Pass resolved color instead of resource id
                         .typeface(mBoldItalicFont)

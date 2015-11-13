@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * Created by etiennelawlor on 6/4/15.
@@ -78,16 +79,23 @@ public class Trestle {
             }
 
             if (!TextUtils.isEmpty(regexString)) {
+                regexString = regexString.replaceAll("\\(", "\\\\(");
+                regexString = regexString.replaceAll("\\)", "\\\\)");
+
                 Pattern pattern = null;
-                switch (caseSensitivity){
-                    case Regex.CASE_INSENSITIVE:
-                        pattern = Pattern.compile(regexString, Pattern.CASE_INSENSITIVE);
-                        break;
-                    case Regex.CASE_SENSITIVE:
-                        pattern = Pattern.compile(regexString);
-                        break;
-                    default:
-                        break;
+                try {
+                    switch (caseSensitivity){
+                        case Regex.CASE_INSENSITIVE:
+                            pattern = Pattern.compile(regexString, Pattern.CASE_INSENSITIVE);
+                            break;
+                        case Regex.CASE_SENSITIVE:
+                            pattern = Pattern.compile(regexString);
+                            break;
+                        default:
+                            break;
+                    }
+                } catch (PatternSyntaxException e){
+                    e.printStackTrace();
                 }
 
                 if(pattern != null){
