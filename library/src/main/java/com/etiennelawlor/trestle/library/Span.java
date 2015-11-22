@@ -7,6 +7,7 @@ import android.text.style.ClickableSpan;
  * Created by etiennelawlor on 6/1/15.
  */
 public final class Span {
+
     // region Member Variables
     private final String text;
     private int foregroundColor = -1;
@@ -27,7 +28,7 @@ public final class Span {
     // endregion
 
     // region Constructor
-    Span(Builder builder) {
+    public Span(Builder builder) {
         this.text = builder.text;
         this.foregroundColor = builder.foregroundColor;
         this.backgroundColor = builder.backgroundColor;

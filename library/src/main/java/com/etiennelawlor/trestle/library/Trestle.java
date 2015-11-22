@@ -31,6 +31,7 @@ import java.util.regex.PatternSyntaxException;
  * Created by etiennelawlor on 6/4/15.
  */
 public class Trestle {
+
     // Set a single span
     public static SpannableString getFormattedText(Span span) {
         SpannableString ss = null;
