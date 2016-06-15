@@ -4,6 +4,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
@@ -24,9 +25,9 @@ import java.util.List;
 public class MainFragment extends Fragment {
 
     // region Member Variables
-    private Typeface mRegularFont;
-    private Typeface mItalicFont;
-    private Typeface mBoldItalicFont;
+    private Typeface regularFont;
+    private Typeface italicFont;
+    private Typeface boldItalicFont;
     // endregion
 
     // Constructors
@@ -39,9 +40,9 @@ public class MainFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mItalicFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Italic.ttf");
-        mRegularFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Regular.ttf");
-        mBoldItalicFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-BoldItalic.ttf");
+        italicFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Italic.ttf");
+        regularFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Regular.ttf");
+        boldItalicFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-BoldItalic.ttf");
     }
 
     @Override
@@ -54,6 +55,24 @@ public class MainFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        setUpTextView1(view);
+        setUpTextView2(view);
+        setUpTextView3(view);
+        setUpTextView4(view);
+        setUpTextView5(view);
+        setUpTextView6(view);
+        setUpTextView7(view);
+        setUpTextView8(view);
+        setUpTextView9(view);
+        setUpTextView10(view);
+        setUpTextView11(view);
+        setUpTextView12(view);
+        setUpTextView13(view);
+    }
+    // endregion
+
+    // region Helper Methods
+    private void setUpTextView1(View view){
         // Setup single span
         TextView tv1 = (TextView) view.findViewById(R.id.tv1);
 
@@ -61,11 +80,13 @@ public class MainFragment extends Fragment {
                 new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
                         .foregroundColor(ContextCompat.getColor(getContext(), R.color.purple_100)) // Pass resolved color instead of resource id
                         .backgroundColor(ContextCompat.getColor(getContext(), R.color.green_500)) // Pass resolved color instead of resource id
-                        .typeface(mItalicFont)
+                        .typeface(italicFont)
                         .build());
 
         tv1.setText(formattedText1);
+    }
 
+    private void setUpTextView2(View view){
         // Setup multiple spans
         TextView tv2 = (TextView) view.findViewById(R.id.tv2);
 
@@ -83,13 +104,15 @@ public class MainFragment extends Fragment {
         spans1.add(new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
                 .foregroundColor(ContextCompat.getColor(getContext(), R.color.green_700)) // Pass resolved color instead of resource id
                 .backgroundColor(ContextCompat.getColor(getContext(), R.color.indigo_200)) // Pass resolved color instead of resource id
-                .typeface(mRegularFont)
+                .typeface(regularFont)
                 .build());
 
         CharSequence formattedText2 = Trestle.getFormattedText(spans1);
 
         tv2.setText(formattedText2);
+    }
 
+    private void setUpTextView3(View view){
         // Setup single span
         TextView tv3 = (TextView) view.findViewById(R.id.tv3);
 
@@ -99,7 +122,9 @@ public class MainFragment extends Fragment {
                         .build());
 
         tv3.setText(formattedText3);
+    }
 
+    private void setUpTextView4(View view){
         // Setup single span
         TextView tv4 = (TextView) view.findViewById(R.id.tv4);
 
@@ -109,7 +134,9 @@ public class MainFragment extends Fragment {
                         .build());
 
         tv4.setText(formattedText4);
+    }
 
+    private void setUpTextView5(View view){
         // Setup single span
         TextView tv5 = (TextView) view.findViewById(R.id.tv5);
 
@@ -119,7 +146,9 @@ public class MainFragment extends Fragment {
                         .build());
 
         tv5.setText(formattedText5);
+    }
 
+    private void setUpTextView6(View view){
         // Setup single span
         TextView tv6 = (TextView) view.findViewById(R.id.tv6);
 
@@ -129,7 +158,9 @@ public class MainFragment extends Fragment {
                         .build());
 
         tv6.setText(formattedText6);
+    }
 
+    private void setUpTextView7(View view){
         // Setup single span
         TextView tv7 = (TextView) view.findViewById(R.id.tv7);
 
@@ -139,7 +170,9 @@ public class MainFragment extends Fragment {
                         .build());
 
         tv7.setText(formattedText7);
+    }
 
+    private void setUpTextView8(View view){
         // Setup single span
         TextView tv8 = (TextView) view.findViewById(R.id.tv8);
 
@@ -149,7 +182,9 @@ public class MainFragment extends Fragment {
                         .build());
 
         tv8.setText(formattedText8);
+    }
 
+    private void setUpTextView9(View view){
         // Setup single span
         TextView tv9 = (TextView) view.findViewById(R.id.tv9);
 
@@ -167,7 +202,9 @@ public class MainFragment extends Fragment {
 
         CharSequence formattedText9 = Trestle.getFormattedText(spans2);
         tv9.setText(formattedText9);
+    }
 
+    private void setUpTextView10(View view){
         // Setup single span
         TextView tv10 = (TextView) view.findViewById(R.id.tv10);
 
@@ -176,11 +213,13 @@ public class MainFragment extends Fragment {
                         .regex(new Regex("c", Regex.CASE_SENSITIVE))
                         .foregroundColor(ContextCompat.getColor(getContext(), R.color.green_500)) // Pass resolved color instead of resource id
                         .backgroundColor(ContextCompat.getColor(getContext(), R.color.red_200)) // Pass resolved color instead of resource id
-                        .typeface(mBoldItalicFont)
+                        .typeface(boldItalicFont)
                         .build());
 
         tv10.setText(formattedText10);
+    }
 
+    private void setUpTextView11(View view){
         // Setup single span
         TextView tv11 = (TextView) view.findViewById(R.id.tv11);
 
@@ -189,11 +228,13 @@ public class MainFragment extends Fragment {
                         .regex(new Regex("(", Regex.CASE_INSENSITIVE))
                         .foregroundColor(ContextCompat.getColor(getContext(), R.color.green_500)) // Pass resolved color instead of resource id
                         .backgroundColor(ContextCompat.getColor(getContext(), R.color.red_200)) // Pass resolved color instead of resource id
-                        .typeface(mBoldItalicFont)
+                        .typeface(boldItalicFont)
                         .build());
 
         tv11.setText(formattedText11);
+    }
 
+    private void setUpTextView12(View view){
         // Setup single span
         TextView tv12 = (TextView) view.findViewById(R.id.tv12);
 
@@ -213,7 +254,9 @@ public class MainFragment extends Fragment {
 
         tv12.setMovementMethod(LinkMovementMethod.getInstance());
         tv12.setText(formattedText12);
+    }
 
+    private void setUpTextView13(View view){
         // Setup single span
         TextView tv13 = (TextView) view.findViewById(R.id.tv13);
 
@@ -223,7 +266,6 @@ public class MainFragment extends Fragment {
                         .build());
 
         tv13.setText(formattedText13);
-
     }
     // endregion
 
