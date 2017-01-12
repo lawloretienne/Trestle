@@ -1,5 +1,9 @@
 # Trestle [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Trestle-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1916) <a href="http://www.methodscount.com/?lib=com.github.lawloretienne%3Atrestle%3A0.0.7"><img src="https://img.shields.io/badge/Methods and size-112 | 10 KB-e91e63.svg"></img></a>
 
+![Trestle](https://raw.githubusercontent.com/lawloretienne/Trestle/master/images/ic_launcher.png)
+
+## Overview
+
 A framework used to bridge one or more spans for use with a TextView
 
 Supports the following spans :
@@ -19,6 +23,8 @@ Supports the following spans :
 `ScaleXSpan`
 
 Also supports one or more spans, spanning the length of a regex match
+
+## Screenshots
 
 ![Trestle](https://raw.githubusercontent.com/lawloretienne/Trestle/master/images/Trestle_Screenshot2.png)
 
