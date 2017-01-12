@@ -179,7 +179,7 @@ public class Trestle {
 
     private static void setUpRelativeSizeSpan(Span span, SpannableString ss, int start, int end) {
         float relativeSize = span.getRelativeSize();
-        if (relativeSize != 0) {
+        if (Float.floatToRawIntBits(relativeSize) != 0) {
             ss.setSpan(
                 new RelativeSizeSpan(relativeSize),
                 start,
@@ -273,7 +273,7 @@ public class Trestle {
 
     private static void setUpScaleXSpan(Span span, SpannableString ss, int start, int end) {
         float scaleX = span.getScaleX();
-        if (scaleX != 0) {
+        if (Float.floatToRawIntBits(scaleX) != 0) {
             ss.setSpan(
                 new ScaleXSpan(scaleX),
                 start,
