@@ -26,7 +26,7 @@ Also supports one or more spans, spanning the length of a regex match
 
 ## Screenshots
 
-![Trestle](https://raw.githubusercontent.com/lawloretienne/Trestle/master/images/Trestle_Screenshot2.png)
+![Trestle](https://raw.githubusercontent.com/lawloretienne/Trestle/master/images/Trestle_Screenshot_3.png)
 
 ## Setup
 
