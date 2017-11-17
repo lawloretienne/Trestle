@@ -1,6 +1,7 @@
 package com.etiennelawlor.trestle.library;
 
 import android.graphics.Typeface;
+import android.support.annotation.ColorRes;
 import android.text.style.ClickableSpan;
 
 /**
@@ -10,6 +11,7 @@ public final class Span {
 
     // region Member Variables
     private final String text;
+    @ColorRes
     private int foregroundColor = -1;
     private int backgroundColor = -1;
     private final float relativeSize;
@@ -52,7 +54,7 @@ public final class Span {
         return this.text;
     }
 
-    public int getForegroundColor() {
+    public @ColorRes int getForegroundColor() {
         return this.foregroundColor;
     }
 
@@ -117,6 +119,7 @@ public final class Span {
         private final String text;
 
         // Optional parameters - initialized to default values
+        @ColorRes
         private int foregroundColor;
         private int backgroundColor;
         private Typeface typeface;
@@ -136,7 +139,7 @@ public final class Span {
             this.text = text;
         }
 
-        public Builder foregroundColor(int fgColor) {
+        public Builder foregroundColor(@ColorRes int fgColor) {
             this.foregroundColor = fgColor;
             return this;
         }
