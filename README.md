@@ -93,6 +93,7 @@ tv2.setText(formattedText2);
 
 ## Projects/Apps using Trestle
 
+- <a href="https://play.google.com/store/apps/details?id=com.getsomeheadspace.android">Headspace</a>
 - <a href="https://play.google.com/store/apps/details?id=com.biggu.shopsavvy&hl=en">ShopSavvy</a>
 
 Feel free to contact me to add yours to this list.
