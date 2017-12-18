@@ -1,8 +1,12 @@
 package com.etiennelawlor.trestle.library;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 
 /**
  * Created by etiennelawlor on 6/1/15.
@@ -11,7 +15,6 @@ public final class Span {
 
     // region Member Variables
     private final String text;
-    @ColorRes
     private int foregroundColor = -1;
     private int backgroundColor = -1;
     private final float relativeSize;
@@ -54,7 +57,7 @@ public final class Span {
         return this.text;
     }
 
-    public @ColorRes int getForegroundColor() {
+    public int getForegroundColor() {
         return this.foregroundColor;
     }
 
@@ -119,7 +122,6 @@ public final class Span {
         private final String text;
 
         // Optional parameters - initialized to default values
-        @ColorRes
         private int foregroundColor;
         private int backgroundColor;
         private Typeface typeface;
@@ -139,13 +141,21 @@ public final class Span {
             this.text = text;
         }
 
-        public Builder foregroundColor(@ColorRes int fgColor) {
-            this.foregroundColor = fgColor;
+        public Builder foregroundColor(Context context, @ColorRes int fgColor) {
+            try{
+                this.foregroundColor = ContextCompat.getColor(context, fgColor);
+            } catch (Resources.NotFoundException e){
+                Log.e("Trestle", "You need to pass in a color resource (e.g. android.R.color.white) for the foregroundColor.");
+            }
             return this;
         }
 
-        public Builder backgroundColor(int bgColor) {
-            this.backgroundColor = bgColor;
+        public Builder backgroundColor(Context context, @ColorRes int bgColor) {
+            try{
+                this.backgroundColor = ContextCompat.getColor(context, bgColor);
+            } catch (Resources.NotFoundException e){
+                Log.e("Trestle", "You need to pass in a color resource (e.g. android.R.color.white) for the backgroundColor.");
+            }
             return this;
         }
 
@@ -179,8 +189,12 @@ public final class Span {
             return this;
         }
 
-        public Builder quoteColor(int quoteColor) {
-            this.quoteColor = quoteColor;
+        public Builder quoteColor(Context context, @ColorRes int quoteColor) {
+            try{
+                this.quoteColor = ContextCompat.getColor(context, quoteColor);
+            } catch (Resources.NotFoundException e){
+                Log.e("Trestle", "You need to pass in a color resource (e.g. android.R.color.white) for the quoteColor.");
+            }
             return this;
         }
 

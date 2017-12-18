@@ -1,10 +1,7 @@
 package com.etiennelawlor.trestle.library;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.support.v4.content.ContextCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -23,7 +20,6 @@ import android.text.style.SuperscriptSpan;
 import android.text.style.TypefaceSpan;
 import android.text.style.URLSpan;
 import android.text.style.UnderlineSpan;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,19 +27,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-import static java.security.AccessController.getContext;
-
 /**
  * Created by etiennelawlor on 6/4/15.
  */
 public class Trestle {
-
-//    https://possiblemobile.com/2013/06/context/
-    private static Context context;
-
-    public static void init(Context c){
-        context = c.getApplicationContext();
-    }
 
     private Trestle(){
     }
@@ -163,22 +150,11 @@ public class Trestle {
     private static void setUpForegroundColorSpan(Span span, SpannableString ss, int start, int end) {
         int fgColor = span.getForegroundColor();
         if (fgColor != 0) {
-            int resolvedColor = -1;
-            try{
-                resolvedColor = ContextCompat.getColor(context, fgColor);
-            } catch (Resources.NotFoundException e){
-                Log.e("Trestle", "setUpForegroundColorSpan : You need to pass in a color resource (e.g. android.R.color.white)");
-            } catch (NullPointerException e){
-                Log.e("Trestle", "setUpForegroundColorSpan : Make sure you call Trestle.init(context) before any calls to Trestle.getFormattedText()");
-            }
-
-            if(resolvedColor != -1){
-                ss.setSpan(
-                        new ForegroundColorSpan(resolvedColor),
-                        start,
-                        end,
-                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            }
+            ss.setSpan(
+                    new ForegroundColorSpan(fgColor),
+                    start,
+                    end,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 

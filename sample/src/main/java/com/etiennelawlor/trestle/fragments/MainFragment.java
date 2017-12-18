@@ -45,8 +45,6 @@ public class MainFragment extends Fragment {
         italicFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Italic.ttf");
         regularFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Regular.ttf");
         boldItalicFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-BoldItalic.ttf");
-
-        Trestle.init(getContext());
     }
 
     @Override
@@ -83,8 +81,8 @@ public class MainFragment extends Fragment {
 
         CharSequence formattedText1 = Trestle.getFormattedText(
                 new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-                        .foregroundColor(R.color.purple_100) // Pass resolved color instead of resource id
-                        .backgroundColor(ContextCompat.getColor(getContext(), R.color.green_500)) // Pass resolved color instead of resource id
+                        .foregroundColor(getContext(), R.color.purple_100)
+                        .backgroundColor(getContext(), R.color.green_500)
                         .typeface(italicFont)
                         .build());
 
@@ -97,18 +95,18 @@ public class MainFragment extends Fragment {
 
         List<Span> spans1 = new ArrayList<>();
         spans1.add(new Span.Builder("ForegroundSpan")
-                .foregroundColor(R.color.red_500) // Pass resolved color instead of resource id
+                .foregroundColor(getContext(), R.color.red_500)
                 .build());
         spans1.add(new Span.Builder("BackgroundSpan")
-//                .backgroundColor(ContextCompat.getColor(getContext(), R.color.yellow_500)) // Pass resolved color instead of resource id
+                .backgroundColor(getContext(), R.color.yellow_500)
                 .build());
         spans1.add(new Span.Builder("ForegroundSpan and BackgroundSpan")
-                .foregroundColor(R.color.blue_500) // Pass resolved color instead of resource id
-//                .backgroundColor(ContextCompat.getColor(getContext(), R.color.blue_300)) // Pass resolved color instead of resource id
+                .foregroundColor(getContext(), R.color.blue_500)
+                .backgroundColor(getContext(), R.color.blue_300)
                 .build());
         spans1.add(new Span.Builder("ForegroundSpan, BackgroundSpan, and CustomTypefaceSpan")
-                .foregroundColor( R.color.yellow_500) // Pass resolved color instead of resource id
-//                .backgroundColor(ContextCompat.getColor(getContext(), R.color.indigo_200)) // Pass resolved color instead of resource id
+                .foregroundColor(getContext(), R.color.yellow_500)
+                .backgroundColor(getContext(), R.color.indigo_200)
                 .typeface(regularFont)
                 .build());
 
@@ -183,7 +181,7 @@ public class MainFragment extends Fragment {
 
         CharSequence formattedText8 = Trestle.getFormattedText(
                 new Span.Builder("QuoteSpan")
-                        .quoteColor(ContextCompat.getColor(getContext(), R.color.green_500)) // Pass resolved color instead of resource id
+                        .quoteColor(getContext(), R.color.green_500)
                         .build());
 
         tv8.setText(formattedText8);
@@ -216,8 +214,8 @@ public class MainFragment extends Fragment {
         CharSequence formattedText10 = Trestle.getFormattedText(
                 new Span.Builder("Regex - ForegroundColorSpan, BackgroundColorSpan, and CustomTypefaceSpan (case sensitive)")
                         .regex(new Regex("c", Regex.CASE_SENSITIVE))
-                        .foregroundColor(R.color.green_500) // Pass resolved color instead of resource id
-                        .backgroundColor(ContextCompat.getColor(getContext(), R.color.red_200)) // Pass resolved color instead of resource id
+                        .foregroundColor(getContext(), R.color.green_500)
+                        .backgroundColor(getContext(), R.color.red_200)
                         .typeface(boldItalicFont)
                         .build());
 
@@ -231,8 +229,8 @@ public class MainFragment extends Fragment {
         CharSequence formattedText11 = Trestle.getFormattedText(
                 new Span.Builder("Regex - ForegroundColorSpan, BackgroundColorSpan, and CustomTypefaceSpan (case insensitive)")
                         .regex(new Regex("(", Regex.CASE_INSENSITIVE))
-                        .foregroundColor(R.color.green_500) // Pass resolved color instead of resource id
-                        .backgroundColor(ContextCompat.getColor(getContext(), R.color.red_200)) // Pass resolved color instead of resource id
+                        .foregroundColor(getContext(), R.color.green_500)
+                        .backgroundColor(getContext(), R.color.red_200)
                         .typeface(boldItalicFont)
                         .build());
 
