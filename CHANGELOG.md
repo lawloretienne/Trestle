@@ -1,5 +1,8 @@
 #Change Log
 
+##Version 0.0.8 (2017-12-17)
+* Added @ColorRes annotation to check for valid color resources being passed in
+
 ##Version 0.0.7 (2015-12-03)
 * Removed unnecessary library dependencies
 
