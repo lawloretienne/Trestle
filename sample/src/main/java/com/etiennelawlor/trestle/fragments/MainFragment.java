@@ -2,13 +2,8 @@ package com.etiennelawlor.trestle.fragments;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +17,8 @@ import com.etiennelawlor.trestle.library.Trestle;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
 
 
 public class MainFragment extends Fragment {
@@ -75,7 +72,7 @@ public class MainFragment extends Fragment {
     // endregion
 
     // region Helper Methods
-    private void setUpTextView1(View view){
+    private void setUpTextView1(View view) {
         // Setup single span
         TextView tv1 = (TextView) view.findViewById(R.id.tv1);
 
@@ -89,7 +86,7 @@ public class MainFragment extends Fragment {
         tv1.setText(formattedText1);
     }
 
-    private void setUpTextView2(View view){
+    private void setUpTextView2(View view) {
         // Setup multiple spans
         TextView tv2 = (TextView) view.findViewById(R.id.tv2);
 
@@ -115,7 +112,7 @@ public class MainFragment extends Fragment {
         tv2.setText(formattedText2);
     }
 
-    private void setUpTextView3(View view){
+    private void setUpTextView3(View view) {
         // Setup single span
         TextView tv3 = (TextView) view.findViewById(R.id.tv3);
 
@@ -127,7 +124,7 @@ public class MainFragment extends Fragment {
         tv3.setText(formattedText3);
     }
 
-    private void setUpTextView4(View view){
+    private void setUpTextView4(View view) {
         // Setup single span
         TextView tv4 = (TextView) view.findViewById(R.id.tv4);
 
@@ -139,7 +136,7 @@ public class MainFragment extends Fragment {
         tv4.setText(formattedText4);
     }
 
-    private void setUpTextView5(View view){
+    private void setUpTextView5(View view) {
         // Setup single span
         TextView tv5 = (TextView) view.findViewById(R.id.tv5);
 
@@ -151,7 +148,7 @@ public class MainFragment extends Fragment {
         tv5.setText(formattedText5);
     }
 
-    private void setUpTextView6(View view){
+    private void setUpTextView6(View view) {
         // Setup single span
         TextView tv6 = (TextView) view.findViewById(R.id.tv6);
 
@@ -163,7 +160,7 @@ public class MainFragment extends Fragment {
         tv6.setText(formattedText6);
     }
 
-    private void setUpTextView7(View view){
+    private void setUpTextView7(View view) {
         // Setup single span
         TextView tv7 = (TextView) view.findViewById(R.id.tv7);
 
@@ -175,7 +172,7 @@ public class MainFragment extends Fragment {
         tv7.setText(formattedText7);
     }
 
-    private void setUpTextView8(View view){
+    private void setUpTextView8(View view) {
         // Setup single span
         TextView tv8 = (TextView) view.findViewById(R.id.tv8);
 
@@ -187,7 +184,7 @@ public class MainFragment extends Fragment {
         tv8.setText(formattedText8);
     }
 
-    private void setUpTextView9(View view){
+    private void setUpTextView9(View view) {
         // Setup single span
         TextView tv9 = (TextView) view.findViewById(R.id.tv9);
 
@@ -207,7 +204,7 @@ public class MainFragment extends Fragment {
         tv9.setText(formattedText9);
     }
 
-    private void setUpTextView10(View view){
+    private void setUpTextView10(View view) {
         // Setup single span
         TextView tv10 = (TextView) view.findViewById(R.id.tv10);
 
@@ -222,7 +219,7 @@ public class MainFragment extends Fragment {
         tv10.setText(formattedText10);
     }
 
-    private void setUpTextView11(View view){
+    private void setUpTextView11(View view) {
         // Setup single span
         TextView tv11 = (TextView) view.findViewById(R.id.tv11);
 
@@ -237,7 +234,7 @@ public class MainFragment extends Fragment {
         tv11.setText(formattedText11);
     }
 
-    private void setUpTextView12(View view){
+    private void setUpTextView12(View view) {
         // Setup single span
         TextView tv12 = (TextView) view.findViewById(R.id.tv12);
 
@@ -259,7 +256,7 @@ public class MainFragment extends Fragment {
         tv12.setText(formattedText12);
     }
 
-    private void setUpTextView13(View view){
+    private void setUpTextView13(View view) {
         // Setup single span
         TextView tv13 = (TextView) view.findViewById(R.id.tv13);
 

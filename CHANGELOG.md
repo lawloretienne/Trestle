@@ -1,5 +1,8 @@
 # Change Log
 
+## Version 0.0.9 (2018-09-14)
+* Fixed issue with Typeface flags
+
 ## Version 0.0.8 (2017-12-17)
 * Added @ColorRes annotation to check for valid color resources being passed in
 

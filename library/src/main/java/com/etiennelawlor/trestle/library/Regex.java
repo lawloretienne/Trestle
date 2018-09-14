@@ -16,7 +16,7 @@ public class Regex {
     // endregion
 
     // region Constructors
-    public Regex(String text, int caseSensitivity){
+    public Regex(String text, int caseSensitivity) {
         this.text = text;
         this.caseSensitivity = caseSensitivity;
     }
