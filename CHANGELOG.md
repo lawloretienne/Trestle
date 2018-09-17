@@ -1,5 +1,8 @@
 # Change Log
 
+## Version 0.0.10 (2018-09-17)
+* Rollback AndroidX update
+
 ## Version 0.0.9 (2018-09-14)
 * Fixed issue with Typeface flags
 

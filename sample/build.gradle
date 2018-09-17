@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 27
     buildToolsVersion '28.0.2'
 
     defaultConfig {
         applicationId "com.etiennelawlor.trestle"
         minSdkVersion 14
-        targetSdkVersion 28
-        versionCode 9
-        versionName "0.0.9"
+        targetSdkVersion 27
+        versionCode 10
+        versionName "0.0.10"
     }
     buildTypes {
         release {
@@ -20,6 +20,6 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.0.0-rc02'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation project(':library')
 }

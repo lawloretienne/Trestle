@@ -2,14 +2,14 @@ apply plugin: 'com.android.library'
 apply from: 'maven-push.gradle'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 27
     buildToolsVersion '28.0.2'
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 28
-        versionCode 9
-        versionName "0.0.9"
+        targetSdkVersion 27
+        versionCode 10
+        versionName "0.0.10"
     }
     buildTypes {
         release {
@@ -20,6 +20,6 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core:1.0.0-rc02'
-    implementation 'androidx.annotation:annotation:1.0.0-rc02'
+    implementation 'com.android.support:support-compat:27.1.1'
+    implementation 'com.android.support:support-annotations:27.1.1'
 }

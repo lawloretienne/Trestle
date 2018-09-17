@@ -32,14 +32,14 @@ Also supports one or more spans, spanning the length of a regex match
 
 #### Gradle
 
-`compile 'com.github.lawloretienne:trestle:0.0.9'`
+`compile 'com.github.lawloretienne:trestle:0.0.10'`
 
 #### Maven
 ```
 <dependency>
     <groupId>com.github.lawloretienne</groupId>
     <artifactId>trestle</artifactId>
-    <version>0.0.9</version>
+    <version>0.0.10</version>
 </dependency>
 ```
 

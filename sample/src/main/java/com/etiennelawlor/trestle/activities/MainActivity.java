@@ -1,11 +1,9 @@
 package com.etiennelawlor.trestle.activities;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.etiennelawlor.trestle.R;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 
 public class MainActivity extends AppCompatActivity {
 

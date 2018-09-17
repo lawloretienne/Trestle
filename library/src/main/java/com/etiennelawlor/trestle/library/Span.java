@@ -3,11 +3,10 @@ package com.etiennelawlor.trestle.library;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.text.style.ClickableSpan;
 import android.util.Log;
-
-import androidx.annotation.ColorRes;
-import androidx.core.content.ContextCompat;
 
 /**
  * Created by etiennelawlor on 6/1/15.

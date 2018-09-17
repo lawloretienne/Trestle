@@ -1,5 +1,6 @@
 package com.etiennelawlor.trestle.fragments;
 
+import android.app.Fragment;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
@@ -17,8 +18,6 @@ import com.etiennelawlor.trestle.library.Trestle;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.fragment.app.Fragment;
 
 
 public class MainFragment extends Fragment {
