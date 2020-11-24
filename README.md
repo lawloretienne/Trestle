@@ -32,7 +32,7 @@ Also supports one or more spans, spanning the length of a regex match
 
 #### Gradle
 
-`compile 'com.github.lawloretienne:trestle:0.0.10'`
+`implementation 'com.github.lawloretienne:trestle:0.0.10'`
 
 #### Maven
 ```
